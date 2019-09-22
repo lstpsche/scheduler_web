@@ -16,7 +16,8 @@ class EventsController < ApplicationController
 
   def event_params
     time = permitted_params['time(4i)'] + ':' + permitted_params['time(5i)']
-    permitted_params.merge(time: time).reject { |key, _val| key.match(/^time\(/) }
+    weekday = permitted_params[:weekday].downcase
+    permitted_params.merge(time: time, weekday: weekday).reject { |key, _val| key.match(/^time\(/) }
   end
 
   def permitted_params
