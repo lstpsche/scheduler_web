@@ -18,9 +18,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: localhost
-  user: postgres
-  password: password
+  host: <%= ENV['DB_HOST'] %>
+  user: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
 
