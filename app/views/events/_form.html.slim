@@ -1,0 +1,8 @@
+= simple_form_for [schedule, schedule.events.build] do |form|
+
+  = form.input :weekday
+  = form.input :time, as: :time
+  = form.input :info, label: 'Name'
+  = form.input :additional_info
+
+  = form.button :submit

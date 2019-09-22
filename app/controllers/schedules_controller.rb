@@ -19,7 +19,7 @@ class SchedulesController < ApplicationController
     if schedule.update(schedule_params)
       redirect_to schedule
     else
-      render :edit
+      redirect_back(fallback_location: edit_schedule_path(schedule))
     end
   end
 

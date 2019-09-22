@@ -6,6 +6,18 @@ p
   strong> Additional info:
   = schedule.additional_info
 
-= link_to 'Edit', edit_schedule_path(schedule)
-br/
-= link_to 'Back', schedules_path
+h2 Events:
+
+- schedule.events_by_weekday.each do |weekday, events|
+  - if events.present?
+    = render partial: 'events/events_by_weekday', locals: { weekday: weekday, events: events }
+    h4 Add event at #{weekday}
+    = render partial: 'events/short_form', locals: { weekday: weekday }
+
+p
+  => link_to 'Edit', edit_schedule_path(schedule)
+  = link_to 'Back', 'javascript:history.back()'
+
+h3 Add event:
+
+= render 'events/form'
