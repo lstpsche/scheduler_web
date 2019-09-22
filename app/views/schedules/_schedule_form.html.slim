@@ -1,0 +1,17 @@
+= simple_form_for schedule do |form|
+
+  - if schedule.errors.any?
+    h3
+      => pluralize(schedule.errors.count, 'error')
+      | prohibited this article from being saved:
+    ul
+      - schedule.errors.full_messages.each do |msg|
+        li = msg
+
+  p = form.input :name, required: false, error: false
+  p
+    = form.label :additional_info, error: false
+    br/
+    = form.text_area :additional_info
+
+  p = form.button :submit

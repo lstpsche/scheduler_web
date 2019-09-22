@@ -1,0 +1,11 @@
+p
+  strong> Name:
+  = schedule.name
+
+p
+  strong> Additional info:
+  = schedule.additional_info
+
+= link_to 'Edit', edit_schedule_path(schedule)
+br/
+= link_to 'Back', schedules_path

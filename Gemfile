@@ -14,7 +14,9 @@ gem 'pry-rails'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# User Slim for pages markup
+# Use SimpleForm for creating forms
+gem 'simple_form'
+# Use Slim for pages markup
 gem 'slim-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
