@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @schedule = Schedule.find_by(id: params[:schedule_id])
     @event = @schedule.events.new(event_params)

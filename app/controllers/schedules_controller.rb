@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :new_schedule, only: %i[new create]
   helper_method :schedule, :schedules
+  before_action :authenticate_user!
 
   def index; end
   def show; end
