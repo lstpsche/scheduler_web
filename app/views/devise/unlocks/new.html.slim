@@ -1,0 +1,13 @@
+h2 Resend unlock instructions
+
+= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |form|
+  = form.error_notification
+  = form.full_error :unlock_token
+
+  .form-inputs
+    = form.input :username, label: 'Telegram Username', required: true, autofocus: true, input_html: { autocomplete: 'email' }
+
+  .form-actions
+    = form.button :submit, 'Resend unlock instructions'
+
+= render 'devise/shared/links'

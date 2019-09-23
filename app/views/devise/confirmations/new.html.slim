@@ -1,0 +1,15 @@
+h2 = t('devise.confirmations.resend')
+
+= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |form|
+  = form.error_notification
+  = form.full_error :confirmation_token
+
+  .form-inputs
+    = form.input :username, label: t('common.telegram_username'), required: true, autofocus: true,
+                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                input_html: { autocomplete: 'username' }
+
+  .form-actions
+    = form.button :submit, t('devise.confirmations.resend_btn')
+
+= render 'devise/shared/links'

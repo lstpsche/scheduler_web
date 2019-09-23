@@ -1,0 +1,12 @@
+h2 Log in
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
+  .form-inputs
+    = form.input :username, label: t('common.telegram_username'), required: false, autofocus: true, input_html: { autocomplete: 'username' }
+    = form.input :password, label: t('common.password'), required: false, input_html: { autocomplete: 'current-password' }
+    = form.input :remember_me, label: t('devise.registrations.remember_me'), as: :boolean if devise_mapping.rememberable?
+
+  .form-actions
+    = form.button :submit, t('devise.registrations.log_in')
+
+= render 'devise/shared/links'
