@@ -17,6 +17,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use SimpleForm for creating forms
 gem 'simple_form'
+gem 'simple_token_authentication'
 # Use Slim for pages markup
 gem 'slim-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,6 +46,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails', '~> 3.8'
 end
 

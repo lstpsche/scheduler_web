@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_201416) do
+ActiveRecord::Schema.define(version: 2019_10_09_201900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,27 @@ ActiveRecord::Schema.define(version: 2019_09_23_201416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "additional_info"
+    t.integer "author_id", null: false
+    t.boolean "custom", default: false, null: false
+    t.integer "customed_by"
+  end
+
+  create_table "student_settings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "university", null: false
+    t.string "faculty", null: false
+    t.string "course", null: false
+    t.string "department"
+    t.string "group"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_student_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
-    t.string "username", default: "", null: false
+    t.string "username", null: false
     t.string "language_code", default: "en", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,7 +74,10 @@ ActiveRecord::Schema.define(version: 2019_09_23_201416) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "validity_token"
+    t.boolean "one_time_password", default: false, null: false
+    t.string "bot_secure_token"
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

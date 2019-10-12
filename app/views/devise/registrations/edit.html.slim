@@ -1,26 +1,24 @@
-h2 = t('devise.registrations.edit')
-  / TODO: manage how to localize this line too
-   = resource_name.to_s.humanize
+h2
+  - if current_user.one_time_password
+    = t('devise.registrations.first_time_edit')
+  - else
+    => t('devise.registrations.edit')
+    | profile
 
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form|
+- url = user_password_path
+
+= simple_form_for(resource, as: resource_name, url: url || registration_path(resource_name), html: { method: :patch }) do |form|
   = form.error_notification
 
   .form-inputs
-    = form.input :username, label: t('common.telegram_username'), required: true, autofocus: true
-
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      p Currently waiting confirmation for: = resource.unconfirmed_email
-
-    = form.input :password, hint: t('devise.registrations.new_password_hint'), required: false
-    = form.input :password_confirmation, required: false
-    = form.input :current_password, hint: t('devise.registrations.current_password_hint'), required: true, input_html: { autocomplete: 'current-password' }
+    - if current_user.one_time_password
+      = form.input :token, label: false, require: true, as: :hidden, input_html: { value: 'sometokenhere' }
+    - else
+      = form.input :current_password, hint: t('devise.registrations.current_password_hint'), required: true, input_html: { autocomplete: 'current-password' }
+    = form.input :password, hint: t('devise.registrations.new_password_hint'), required: current_user.one_time_password
+    = form.input :password_confirmation, required: current_user.one_time_password
 
   .form-actions
     = form.button :submit, t('devise.registrations.update_btn')
-
-h3 = t('devise.registrations.cancel_account')
-
-p = t('devise.registrations.unhappy')
-  = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), data: { confirm: t('common.popups.are_you_sure') }, method: :delete
 
 = link_to t('navigations.back'), 'javascript:history.back()'

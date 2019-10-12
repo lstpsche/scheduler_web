@@ -1,0 +1,2 @@
+module BotConnectionsHelper
+end

@@ -5,11 +5,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
+  acts_as_token_authenticatable
 
   validates :username, uniqueness: true
 
   serialize :context, HashSerializer
   store_accessor :context, :last_message, :replace_last_message, :return_to
+  has_one :student_settings
   has_many :schedule_users
   has_many :schedules, through: :schedule_users
 
@@ -21,5 +23,9 @@ class User < ApplicationRecord
 
   def email_changed?
     false
+  end
+
+  def first_sign_in?
+    sign_in_count == 1
   end
 end
