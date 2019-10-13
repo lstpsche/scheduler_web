@@ -5,18 +5,19 @@ h2
     => t('devise.registrations.edit')
     | profile
 
-- url = user_password_path
-
-= simple_form_for(resource, as: resource_name, url: url || registration_path(resource_name), html: { method: :patch }) do |form|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |form|
   = form.error_notification
+  ul.errors_list
+    - resource.errors.full_messages.each do |msg|
+      li.error = msg
 
   .form-inputs
-    - if current_user.one_time_password
-      = form.input :token, label: false, require: true, as: :hidden, input_html: { value: 'sometokenhere' }
-    - else
+    - password_hint = current_user.one_time_password? ? t('devise.registrations.min_length', length: 6) : t('devise.registrations.new_password_hint')
+    - unless current_user.one_time_password?
       = form.input :current_password, hint: t('devise.registrations.current_password_hint'), required: true, input_html: { autocomplete: 'current-password' }
-    = form.input :password, hint: t('devise.registrations.new_password_hint'), required: current_user.one_time_password
-    = form.input :password_confirmation, required: current_user.one_time_password
+    = form.input :otp, label: false, require: true, as: :hidden, input_html: { value: current_user.one_time_password? }
+    = form.input :password, hint: password_hint, required: current_user.one_time_password?
+    = form.input :password_confirmation, required: current_user.one_time_password?
 
   .form-actions
     = form.button :submit, t('devise.registrations.update_btn')

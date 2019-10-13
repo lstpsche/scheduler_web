@@ -6,7 +6,7 @@ h2 = t('devise.registrations.sign_up')
   .form-inputs
     = form.input :username, label: t('common.telegram_username'), required: true, autofocus: true, input_html: { autocomplete: 'username' }
     = form.input :password, required: true,
-                            hint: (t('devise.registrations.min_length') % { length: @minimum_password_length } if @minimum_password_length),
+                            hint: (t('devise.registrations.min_length', length: @minimum_password_length) if @minimum_password_length),
                             input_html: { autocomplete: 'new-password' }
     = form.input :password_confirmation, required: true
 

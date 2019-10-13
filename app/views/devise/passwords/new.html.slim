@@ -1,12 +1,16 @@
 h2 = t('devise.registrations.forgot_password')
 
+h4 = t('devise.registrations.reset_only_once')
+
 = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |form|
-  = form.error_notification
+  ul.errors_list
+    - resource.errors.full_messages.each do |msg|
+      li.error = msg
 
   .form-inputs
     = form.input :username, label: t('common.telegram_username'), required: true, autofocus: true, input_html: { autocomplete: 'username' }
 
   .form-actions
-    = form.button :submit, t('devise.passwords.send_reset_instructions_btn')
+    = form.button :submit, t('devise.passwords.send_me_password')
 
 = render 'devise/shared/links'

@@ -11,21 +11,34 @@ class User < ApplicationRecord
 
   serialize :context, HashSerializer
   store_accessor :context, :last_message, :replace_last_message, :return_to
+
   has_one :student_settings
   has_many :schedule_users
   has_many :schedules, through: :schedule_users
 
-  alias :replace_last_message? :replace_last_message
-
-  def last_message_id
-    last_message[:result][:message_id]
-  end
-
+  # it's needed to escape devise's extreme depending on emails
   def email_changed?
     false
   end
 
-  def first_sign_in?
-    sign_in_count == 1
+  def encrypted_otp
+    otp_fresh? ? super : nil
+  end
+
+  def logged_in_via_otp?
+    logged_in_via == 'otp'
+  end
+
+  def logged_in_via_pass?
+    logged_in_via == 'pass'
+  end
+
+  def one_time_password?
+    otp_fresh? ? one_time_password : false
+  end
+
+  # One-Time Password can be used for 1 day (24 hours) only
+  def otp_fresh?
+    (Time.current - otp_generated_at) / 1.day < 1
   end
 end

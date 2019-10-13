@@ -1,0 +1,3 @@
+en:
+  telegram_bot:
+    one_time_password: Your one time password is `%{password}`

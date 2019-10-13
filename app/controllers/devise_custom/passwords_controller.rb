@@ -2,41 +2,33 @@
 
 module DeviseCustom
   class PasswordsController < Devise::PasswordsController
-    skip_before_action :verify_authenticity_token, only: %i[create]
-    before_action :verify_validity_token, only: %i[create]
+    include DeviseCustom::PasswordsHelper
 
     def create
-      user.password = user.password_confirmation = user_params[:password]
-      user.one_time_password = true
+      unless user.otp_fresh?
+        generate_password
+        set_one_time_password
 
-      if user.save
-        head :ok
+        if user.save
+          send_one_time_password
+          redirect_to new_user_session_path
+        else
+          render :new
+        end
       else
-        head :unprocessable_entity
+        user.errors.add(:base, I18n.t('devise.sessions.otp_is_fresh'))
+        render :new
       end
-    end
-
-    def edit
-      binding.pry
-      super
     end
 
     private
 
-    # TODO: rename validity_token to transaction_security_token
-    def verify_validity_token
-      validity_token = user&.validity_token
-      user.update(validity_token: nil)
-
-      request.headers[:HTTP_VALIDITY_TOKEN] == validity_token
-    end
-
     def user
-      @user ||= User.find_by(id: user_params[:id], username: user_params[:username])
+      @user ||= User.find_by(username: user_params[:username])
     end
 
     def user_params
-      params.require(:user).permit(:id, :username, :password)
+      params.require(:user).permit(:username)
     end
   end
 end
