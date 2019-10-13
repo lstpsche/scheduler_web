@@ -3,6 +3,8 @@
 module DeviseCustom
   class PasswordsController < Devise::PasswordsController
     include DeviseCustom::PasswordsHelper
+    skip_before_action :verify_authenticity_token, only: :create
+    before_action :check_validity_token_match, only: :create
 
     def create
       unless user.otp_fresh?
@@ -22,6 +24,10 @@ module DeviseCustom
     end
 
     private
+
+    def check_validity_token_match
+      head :unprocessable_entity unless validity_token_match?
+    end
 
     def user
       @user ||= User.find_by(username: user_params[:username])

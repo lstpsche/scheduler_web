@@ -15,7 +15,6 @@ h2
     - password_hint = current_user.one_time_password? ? t('devise.registrations.min_length', length: 6) : t('devise.registrations.new_password_hint')
     - unless current_user.one_time_password?
       = form.input :current_password, hint: t('devise.registrations.current_password_hint'), required: true, input_html: { autocomplete: 'current-password' }
-    = form.input :otp, label: false, require: true, as: :hidden, input_html: { value: current_user.one_time_password? }
     = form.input :password, hint: password_hint, required: current_user.one_time_password?
     = form.input :password_confirmation, required: current_user.one_time_password?
 
