@@ -26,7 +26,7 @@ module DeviseCustom
     end
 
     def validity_token_match?
-      return false unless http_validity_token.present?
+      return true unless http_validity_token.present?
 
       http_validity_token == hash_auth_token(user.username)
     end
