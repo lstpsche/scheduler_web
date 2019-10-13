@@ -1,9 +1,10 @@
 en:
   common:
-    telegram_username: 'Telegram Username'
     password: 'Password'
     popups:
       are_you_sure: 'Are you sure?'
+    scheduler_bot: Scheduler Bot
+    telegram_username: 'Telegram Username'
   navigations:
     back: 'Back'
   weekdays:

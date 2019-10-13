@@ -35,6 +35,7 @@ en:
       first_time_edit: 'Create new password for your account'
       forgot_password: 'Forgot your password?'
       log_in: 'Log in'
+      log_in_page: 'Log in page'
       log_in_with_provider: "Sign in with %{provider}"
       min_length: "%{length} characters minimum"
       new_password_hint: "leave it blank if you don't want to change it"
@@ -42,6 +43,9 @@ en:
       remember_me: 'Remember me'
       reset_only_once: You can reset your password only once at 24 hours
       sign_up: 'Sign up'
+      sign_up_instructions_first: 'To sign up, please write `/start` to Telegram-bot:'
+      sign_up_instructions_second: After registrating answer "Yes" when asked about generating One-Time Password
+      sign_up_instructions_third: Then go to
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
