@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_142917) do
+ActiveRecord::Schema.define(version: 2019_11_02_201455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 2019_10_13_142917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "additional_info"
-    t.integer "author_id", null: false
+    t.integer "author_id"
     t.boolean "custom", default: false, null: false
     t.integer "customed_by"
+    t.boolean "cloned", default: false, null: false
   end
 
   create_table "student_settings", force: :cascade do |t|
