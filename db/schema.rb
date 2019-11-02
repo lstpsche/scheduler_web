@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2019_11_02_201455) do
     t.datetime "updated_at", null: false
     t.string "additional_info"
     t.integer "author_id"
-    t.boolean "custom", default: false, null: false
     t.integer "customed_by"
     t.boolean "cloned", default: false, null: false
+    t.boolean "customed", default: false, null: false
   end
 
   create_table "student_settings", force: :cascade do |t|
