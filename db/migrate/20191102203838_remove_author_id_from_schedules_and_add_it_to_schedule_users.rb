@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RemoveAuthorIdFromSchedulesAndAddItToScheduleUsers < ActiveRecord::Migration[5.2]
   def change
     remove_column :schedules, :author_id

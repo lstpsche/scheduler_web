@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddCustomFieldToSchedule < ActiveRecord::Migration[5.2]
   def change
     add_column :schedules, :customed, :boolean, null: false, default: false

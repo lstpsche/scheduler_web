@@ -7,7 +7,10 @@ module DeviseCustom
     before_action :check_validity_token_match, only: :create
 
     def create
-      unless user.otp_fresh?
+      if user.otp_fresh?
+        user.errors.add(:base, I18n.t('devise.sessions.otp_is_fresh'))
+        render :new
+      else
         generate_password
         set_one_time_password
 
@@ -17,9 +20,6 @@ module DeviseCustom
         else
           render :new
         end
-      else
-        user.errors.add(:base, I18n.t('devise.sessions.otp_is_fresh'))
-        render :new
       end
     end
 
