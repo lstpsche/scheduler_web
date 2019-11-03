@@ -13,9 +13,7 @@ module Validators
       @event = event
       fields.each { |field| send("validate_#{field}") }
 
-      if @errors.any?(&:present?)
-        @errors.each { |error| event.errors[:base] << error }
-      end
+      @errors.each { |error| event.errors[:base] << error } if @errors.any?(&:present?)
     end
 
     private
@@ -26,10 +24,10 @@ module Validators
 
     def validate_time
       hours, minutes = event.time.split(':', 2).map(&:to_i)
-      @errors << 'Hours out of range.' if hours > 23 || hours < 0
-      @errors << 'Minutes out of range.' if minutes > 59 || minutes < 0
-    rescue => error
-      @errors << error.to_s
+      @errors << 'Hours out of range.' if hours > 23 || hours.negative?
+      @errors << 'Minutes out of range.' if minutes > 59 || minutes.negative?
+    rescue StandardError => e
+      @errors << e.to_s
     end
 
     def validate_weekday

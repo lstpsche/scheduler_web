@@ -11,7 +11,7 @@ module DeviseCustom
     end
 
     def check_user_validity
-      # hack to make devise show error message
+      # HACK: to make devise show error message
       warden.authenticate!(auth_options) unless cur_user.present?
     end
 

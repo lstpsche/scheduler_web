@@ -6,16 +6,12 @@ class ScheduleUser < ApplicationRecord
 
   after_create do |s_u|
     unless ScheduleUser.find_by(schedule_id: s_u.schedule.id, author: true).present?
-      set_author_true(s_u)
+      s_u.update(author: true)
       fill_student_settings(s_u) if s_u.schedule.for_student
     end
   end
 
   private
-
-  def set_author_true(s_u)
-    s_u.update(author: true)
-  end
 
   def fill_student_settings(s_u)
     student_settings = s_u.user.student_settings

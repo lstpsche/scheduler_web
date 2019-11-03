@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddAdditionalInfoFieldToScheduleAndEvent < ActiveRecord::Migration[5.2]
   def change
     add_column :schedules, :additional_info, :string

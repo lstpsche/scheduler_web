@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateScheduleUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :schedule_users do |t|
