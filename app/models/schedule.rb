@@ -13,4 +13,8 @@ class Schedule < ApplicationRecord
       tuesday: events.where(weekday: 'tuesday')
     }
   end
+
+  def author
+    schedule_users.find_by(author: true)&.user
+  end
 end
