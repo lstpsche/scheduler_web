@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ScheduleController, type: :controller do
+RSpec.describe SchedulesController, type: :controller do
 
 end

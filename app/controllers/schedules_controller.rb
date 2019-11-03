@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SchedulesController < ApplicationController
   before_action :new_schedule, only: %i[new create]
   helper_method :schedule, :schedules
