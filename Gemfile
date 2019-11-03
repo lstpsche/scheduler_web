@@ -17,7 +17,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use SimpleForm for creating forms
 gem 'simple_form', '>= 5.0.0'
-gem 'simple_token_authentication'
+gem 'simple_token_authentication', '~> 1.17.0'
 # Use Slim for pages markup
 gem 'slim-rails'
 # Gem for telegram bot commands
