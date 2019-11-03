@@ -56,6 +56,7 @@ gem 'rubyzip', '>= 1.3.0'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop', '~> 0.76.0', require: false
 end
 
 group :development do
