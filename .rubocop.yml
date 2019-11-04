@@ -1,11 +1,12 @@
 AllCops:
   Exclude:
-    - 'db/migrate/*'
-    - 'db/schema.rb'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'bin/*'
-    - 'Gemfile*'
+    - db/migrate/*
+    - db/schema.rb
+    - config/**/*
+    - script/**/*
+    - vendor/bundle/**/*
+    - bin/*
+    - Gemfile*
 
 Metrics/AbcSize:
   Enabled: false
