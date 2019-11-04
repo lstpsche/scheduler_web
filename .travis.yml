@@ -1,5 +1,6 @@
 language: ruby
-rbenv: 2.6.3
+rvm:
+  - 2.6.3
 services:
   - postgresql
 before_script:
