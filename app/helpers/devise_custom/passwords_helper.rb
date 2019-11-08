@@ -20,9 +20,8 @@ module DeviseCustom
     end
 
     def set_one_time_password
-      user.encrypted_otp = hash_password(@password, user.username)
-      user.otp_generated_at = Time.current
-      user.one_time_password = true
+      # TODO: check if it's working
+      user.update(encrypted_otp: hash_password(@password, user.username))
     end
 
     def validity_token_match?

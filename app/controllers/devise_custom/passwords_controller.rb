@@ -19,9 +19,9 @@ module DeviseCustom
 
     def create_new_otp
       generate_password
-      set_one_time_password
+      saved = set_one_time_password
 
-      if user.save
+      if saved
         send_one_time_password
         redirect_to new_user_session_path
       else

@@ -25,6 +25,11 @@ class User < ApplicationRecord
     otp_fresh? ? super : nil
   end
 
+  def encrypted_otp=(value)
+    super
+    update(otp_generated_at: Time.current, one_time_password: true)
+  end
+
   def logged_in_via?(method)
     logged_in_via == method
   end
