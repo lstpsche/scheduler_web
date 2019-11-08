@@ -8,17 +8,33 @@ AllCops:
     - bin/*
     - Gemfile*
 
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
+
 Metrics/AbcSize:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
   Max: 10
 
-Metrics/MethodLength:
-  Max: 20
-
 Metrics/LineLength:
   Max: 120
 
+Metrics/MethodLength:
+  Max: 20
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
+
 Style/Documentation:
   Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
