@@ -11,19 +11,23 @@ module DeviseCustom
         user.errors.add(:base, I18n.t('devise.sessions.otp_is_fresh'))
         render :new
       else
-        generate_password
-        set_one_time_password
-
-        if user.save
-          send_one_time_password
-          redirect_to new_user_session_path
-        else
-          render :new
-        end
+        create_new_otp
       end
     end
 
     private
+
+    def create_new_otp
+      generate_password
+      set_one_time_password
+
+      if user.save
+        send_one_time_password
+        redirect_to new_user_session_path
+      else
+        render :new
+      end
+    end
 
     def check_validity_token_match
       head :unprocessable_entity unless validity_token_match?

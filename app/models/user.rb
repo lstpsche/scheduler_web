@@ -25,12 +25,8 @@ class User < ApplicationRecord
     otp_fresh? ? super : nil
   end
 
-  def logged_in_via_otp?
-    logged_in_via == 'otp'
-  end
-
-  def logged_in_via_pass?
-    logged_in_via == 'pass'
+  def logged_in_via?(method)
+    logged_in_via == method
   end
 
   def one_time_password?
@@ -40,5 +36,17 @@ class User < ApplicationRecord
   # One-Time Password can be used for 1 day (24 hours) only
   def otp_fresh?
     (Time.current - otp_generated_at) / 1.day < 1
+  end
+
+  def update_otp_after_pass_set
+    update(one_time_password: false, encrypted_otp: '', logged_in_via: 'pass') if logged_in_via?('otp')
+  end
+
+  def update_pass_after_otp_log_in(update_params)
+    return false unless logged_in_via?('otp')
+
+    update(password: update_params[:password],
+           password_confirmation: update_params[:password_confirmation]
+          )
   end
 end

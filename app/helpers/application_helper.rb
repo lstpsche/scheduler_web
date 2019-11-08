@@ -14,7 +14,7 @@ module ApplicationHelper
   def redirect_if_otp
     return unless current_user
 
-    redirect_to edit_user_registration_path if current_user.logged_in_via_otp?
+    redirect_to edit_user_registration_path if current_user.logged_in_via?('otp')
   end
 
   def renew_auth_token!

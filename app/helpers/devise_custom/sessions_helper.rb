@@ -3,7 +3,7 @@
 module DeviseCustom
   module SessionsHelper
     def after_sign_in_action
-      if current_user.one_time_password? && current_user.logged_in_via_otp?
+      if current_user.one_time_password? && current_user.logged_in_via?('otp')
         redirect_to edit_user_registration_path
       else
         respond_with resource, location: after_sign_in_path_for(resource)
@@ -23,6 +23,10 @@ module DeviseCustom
 
     def logged_in_user(params)
       otp_match?(params[:password]) ? cur_user : nil
+    end
+
+    def update_logged_in_via(method)
+      cur_user.update(logged_in_via: method) if resource
     end
   end
 end
