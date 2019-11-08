@@ -13,15 +13,14 @@ class ScheduleUser < ApplicationRecord
 
   private
 
+  # TODO: check if it's working fine
   def fill_student_settings(s_u)
     student_settings = s_u.user.student_settings
 
-    s_u.schedule.update(
-      university: student_settings.university,
-      faculty: student_settings.faculty,
-      course: student_settings.course,
-      department: student_settings.department,
-      group: student_settings.group
-    )
+    student_settings.options_list.each { |option_name| update_student_option(s_u, option_name) }
+  end
+
+  def update_student_option(s_u, option_name)
+    s_u.schedule.update(option_name => s_u.user.student_settings.try(option_name))
   end
 end
