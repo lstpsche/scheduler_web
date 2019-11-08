@@ -23,11 +23,19 @@ module Validators
     end
 
     def validate_time
-      hours, minutes = event.time.split(':', 2).map(&:to_i)
-      @errors << 'Hours out of range.' if hours > 23 || hours.negative?
-      @errors << 'Minutes out of range.' if minutes > 59 || minutes.negative?
+      hours, minutes = hours_and_minutes
+      check_time_valid(hours, minutes)
     rescue StandardError => error
       @errors << error.to_s
+    end
+
+    def hours_and_minutes
+      event.time.split(':', 2).map(&:to_i)
+    end
+
+    def check_time_valid(hours, minutes)
+      @errors << 'Hours out of range.' if hours > 23 || hours.negative?
+      @errors << 'Minutes out of range.' if minutes > 59 || minutes.negative?
     end
 
     def validate_weekday

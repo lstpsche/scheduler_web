@@ -3,7 +3,7 @@
 module DeviseCustom
   module SessionsHelper
     def after_sign_in_action
-      if current_user.one_time_password? && current_user.logged_in_via?('otp')
+      if logged_in_by_otp?
         redirect_to edit_user_registration_path
       else
         respond_with resource, location: after_sign_in_path_for(resource)
@@ -19,6 +19,10 @@ module DeviseCustom
       encrypted_pass = hash_password(password, cur_user.username)
 
       cur_user.encrypted_otp == encrypted_pass
+    end
+
+    def logged_in_by_otp?
+      current_user.one_time_password? && current_user.logged_in_via?('otp')
     end
 
     def logged_in_user(params)
