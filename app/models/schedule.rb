@@ -17,4 +17,25 @@ class Schedule < ApplicationRecord
   def author
     schedule_users.find_by(author: true)&.user
   end
+
+  def create_custom
+    Schedule.create(attributes.merge(customed_new_attrs))
+  end
+
+  private
+
+  def customed_new_attrs
+    {
+      id: new_uniq_id,
+      cloned: true,
+      customed: true,
+      customed_by: id,
+      created_at: Time.current,
+      updated_at: Time.current
+    }
+  end
+
+  def new_uniq_id
+    Schedule.pluck(:id).max.next
+  end
 end
