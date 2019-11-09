@@ -8,10 +8,11 @@ class Schedule < ApplicationRecord
   has_many :events, dependent: :destroy
 
   def events_by_weekday
-    {
-      monday: events.where(weekday: 'monday'),
-      tuesday: events.where(weekday: 'tuesday')
-    }
+    events = self.events
+
+    I18n.t('weekdays').inject({}) do |result, (key, weekday)|
+      result.merge(key => events_at_weekday(events, weekday))
+    end.compact
   end
 
   def author
@@ -24,14 +25,15 @@ class Schedule < ApplicationRecord
 
   private
 
+  def events_at_weekday(events, weekday)
+    events.select { |event| event.weekday == weekday }.presence
+  end
+
   def customed_new_attrs
     {
       id: new_uniq_id,
-      cloned: true,
-      customed: true,
-      customed_by: id,
-      created_at: Time.current,
-      updated_at: Time.current
+      customed: true, customed_by: id,
+      created_at: nil, updated_at: nil
     }
   end
 
