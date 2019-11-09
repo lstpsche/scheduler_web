@@ -13,7 +13,7 @@ class User < ApplicationRecord
   store_accessor :context, :last_message, :replace_last_message, :return_to
 
   has_one :student_settings
-  has_many :schedule_users
+  has_many :schedule_users, dependent: :destroy
   has_many :schedules, through: :schedule_users
 
   # it's needed to escape devise's extreme depending on emails
@@ -53,5 +53,11 @@ class User < ApplicationRecord
     update(password: update_params[:password],
            password_confirmation: update_params[:password_confirmation]
           )
+  end
+
+  # maybe rename this method somehow
+  def custom_schedule(schedule)
+    schedules << schedule.create_custom
+    save
   end
 end
