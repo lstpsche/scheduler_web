@@ -1,6 +1,7 @@
 # Scheduler Web
 
 [![Build Status](https://travis-ci.com/lstpsche/scheduler_web.svg?branch=master)](https://travis-ci.com/lstpsche/scheduler_web)
+[![codebeat badge](https://codebeat.co/badges/2bdf9905-05e9-4527-b99d-254c93c34bf0)](https://codebeat.co/projects/github-com-lstpsche-scheduler_web-master)
 
 # Feature list
 
