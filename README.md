@@ -1,5 +1,7 @@
 # Scheduler Web
 
+[![Build Status](https://travis-ci.com/lstpsche/scheduler_web.svg?branch=master)](https://travis-ci.com/lstpsche/scheduler_web)
+
 # Feature list
 
 _coming soon_
