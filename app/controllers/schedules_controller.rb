@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SchedulesController < ApplicationController
+  include TokenAuthenticatable
+
   before_action :new_schedule, only: %i[new create]
   helper_method :schedule, :schedules
   before_action :authenticate_user!
