@@ -82,3 +82,5 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  <<: *default
+  database: scheduler_production
