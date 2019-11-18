@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :schedules do
     resources :events
   end
+
+  post 'bot_login', action: :login, controller: 'bot_login'
 end
