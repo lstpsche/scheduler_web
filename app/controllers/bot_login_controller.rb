@@ -8,7 +8,7 @@ class BotLoginController < ApplicationController
   def login
     return head :no_content if user_signed_in?
 
-    user = User.find_by(id: user_params[:id]).presence || create_user_with(user_params)
+    user = find_or_create_user(user_params)
     sign_in(user)
   rescue StandardError
     head :bad_request

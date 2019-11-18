@@ -12,7 +12,7 @@ Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: new_line
 
 Metrics/AbcSize:
-  Enabled: false
+  Max: 10
 
 Metrics/CyclomaticComplexity:
   Max: 10
