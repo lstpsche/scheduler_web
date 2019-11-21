@@ -1,0 +1,21 @@
+h1 = t('admin.all_users.header')
+
+table
+  tr
+    th = t('admin.all_users.user.id')
+    th = t('admin.all_users.user.telegram_username')
+    th = t('admin.all_users.user.first_name')
+    th = t('admin.all_users.user.last_name')
+    th = t('admin.all_users.user.language_code')
+    th = t('admin.all_users.user.one_time_password')
+
+  - @users.each do |user|
+    tr
+      th = user.id
+      th = user.username
+      th = user.first_name
+      th = user.last_name
+      th = user.language_code
+      th = user.one_time_password.to_s
+
+= link_to t('admin.all_users.home_button_text'), root_path
