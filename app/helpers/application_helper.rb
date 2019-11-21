@@ -12,4 +12,10 @@ module ApplicationHelper
 
     redirect_to edit_user_registration_path if current_user.logged_in_via?('otp')
   end
+
+  def render_404_error
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
+    end
+  end
 end

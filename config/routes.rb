@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   end
 
   post 'bot_login', action: :login, controller: 'bot_login'
+
+  scope :admin do
+    resources :users, module: :admin, only: %i[index]
+  end
 end
