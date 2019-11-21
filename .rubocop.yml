@@ -26,14 +26,17 @@ Metrics/MethodLength:
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
 
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
 Style/Documentation:
   Enabled: false
 
 Style/FormatStringToken:
   EnforcedStyle: template
 
-Style/Alias:
-  EnforcedStyle: prefer_alias_method
+Style/NumericLiterals:
+  Enabled: false
 
 Style/RegexpLiteral:
   EnforcedStyle: slashes
