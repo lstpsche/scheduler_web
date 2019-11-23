@@ -7,8 +7,6 @@ class Schedule < ApplicationRecord
   has_many :users, through: :schedule_users
   has_many :events, dependent: :destroy
 
-  alias_method :private?, :private
-
   def events_by_weekday
     events = self.events
 
