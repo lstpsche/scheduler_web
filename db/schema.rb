@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_181455) do
+ActiveRecord::Schema.define(version: 2019_11_23_165509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_11_19_181455) do
     t.datetime "updated_at", null: false
     t.string "additional_info"
     t.integer "customed_by"
-    t.boolean "cloned", default: false, null: false
     t.boolean "customed", default: false, null: false
     t.string "university"
     t.string "faculty"
@@ -81,11 +80,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_181455) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.boolean "one_time_password", default: false, null: false
     t.string "authentication_token", limit: 30
-    t.string "encrypted_otp", default: "", null: false
-    t.string "logged_in_via"
-    t.datetime "otp_generated_at", default: "2019-10-11 21:52:00", null: false
     t.string "bot_request_auth_token"
     t.boolean "global_bot_first_start", default: true, null: false
     t.boolean "students_bot_first_start", default: true, null: false
