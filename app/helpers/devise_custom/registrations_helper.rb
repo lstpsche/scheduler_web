@@ -2,7 +2,7 @@
 
 module DeviseCustom
   module RegistrationsHelper
-    def after_update_path_for(resource)
+    def after_update_path_for(_resource)
       schedules_path
     end
   end
