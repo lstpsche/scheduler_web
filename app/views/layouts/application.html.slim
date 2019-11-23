@@ -14,8 +14,7 @@ html
 
     - if current_user
       p = link_to 'Sign out', destroy_user_session_path, method: :delete
-    - else
-      .telegram-login-button
-        = render 'common/telegram_login_button'
+    - elsif controller_action != 'sessions#new'
+      = render 'common/telegram_login_button'
 
     = yield

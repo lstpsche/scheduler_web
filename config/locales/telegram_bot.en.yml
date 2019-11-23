@@ -1,3 +1,2 @@
 en:
   telegram_bot:
-    one_time_password: "Here is your one-time password\n\n*Don't share it with anyone!*\n\nThis password will be available for use for only 24 hours from now.\nAnd, as you can assume, it will be available for only one login.\n\nPassword: `%{password}`"

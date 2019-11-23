@@ -8,22 +8,21 @@ en:
         id: ID
         language_code: Language code
         last_name: Last name
-        one_time_password: OTP
         telegram_username: TG username
 
   common:
-    password: 'Password'
+    password: Password
     popups:
-      are_you_sure: 'Are you sure?'
+      are_you_sure: Are you sure?
     scheduler_bot: Scheduler Bot
-    telegram_username: 'Telegram Username'
+    telegram_username: Telegram Username
   navigations:
-    back: 'Back'
+    back: Back
   weekdays:
-    monday: 'monday'
-    tuesday: 'tuesday'
-    wednesday: 'wednesday'
-    thursday: 'thursday'
-    friday: 'friday'
-    saturday: 'saturday'
-    sunday: 'sunday'
+    monday: monday
+    tuesday: tuesday
+    wednesday: wednesday
+    thursday: thursday
+    friday: friday
+    saturday: saturday
+    sunday: sunday
