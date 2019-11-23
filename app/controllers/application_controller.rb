@@ -2,6 +2,4 @@
 
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-
-  before_action :redirect_if_otp
 end
