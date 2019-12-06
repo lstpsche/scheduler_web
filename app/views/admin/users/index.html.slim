@@ -7,7 +7,6 @@ table
     th = t('admin.all_users.user.first_name')
     th = t('admin.all_users.user.last_name')
     th = t('admin.all_users.user.language_code')
-    th = t('admin.all_users.user.one_time_password')
 
   - @users.each do |user|
     tr
@@ -16,6 +15,5 @@ table
       th = user.first_name
       th = user.last_name
       th = user.language_code
-      th = user.one_time_password.to_s
 
 = link_to t('admin.all_users.home_button_text'), root_path

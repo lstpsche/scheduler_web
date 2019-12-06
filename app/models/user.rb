@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :schedule_users, dependent: :destroy
   has_many :schedules, through: :schedule_users
 
+  def full_name
+    first_name + ' ' + last_name
+  end
+
   # it's needed to escape devise's extreme depending on emails
   def email_changed?
     false

@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-xl
+    a.navbar-brand href='#'
+      | Scheduler
+    button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbar-collapse' aria-controls='navbar-collapse' aria-expanded='false' aria-label='Toggle navigation'
+      span.navbar-toggler-icon
+
+    .collapse.navbar-collapse.navbar-nav.mr-auto#navbar-collapse
+      ul.navbar-nav.mr-auto
+      - if current_user
+        li.nav-item.dropdown
+          = link_to current_user.full_name, '#', class: 'nav-link dropdown-toggle', id: 'navbar-dropdown', data: { toggle: 'dropdown', 'expanded': false }
+          .dropdown-menu aria-labelledby='navbar-dropdown'
+            = link_to 'Profile settings', edit_user_registration_path, class: 'dropdown-item'
+            = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+      - elsif controller_action != 'sessions#new'
+        = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', button_size: 'medium'

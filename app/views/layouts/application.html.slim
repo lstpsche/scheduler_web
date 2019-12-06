@@ -9,12 +9,10 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    p.notice = notice
-    p.alert = alert
+    = render 'common/navbar'
 
-    - if current_user
-      p = link_to 'Sign out', destroy_user_session_path, method: :delete
-    - elsif controller_action != 'sessions#new'
-      = render 'common/telegram_login_button'
+    = notice
+    = alert
 
-    = yield
+    .container
+      = yield
