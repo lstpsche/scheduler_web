@@ -1,3 +1,6 @@
-h1 Home page
-
-= link_to 'All schedules', controller: 'schedules'
+ #full-page-cover
+  .content
+    h1.cover-heading = t('common.scheduler')
+    p.lead = t('home.index.scheduler_overview')
+    p.lead
+      = link_to t('devise.registrations.sign_up'), new_user_session_path, class: 'btn btn-lg btn-secondary'
