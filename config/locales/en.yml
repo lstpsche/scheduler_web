@@ -18,7 +18,7 @@ en:
     telegram_username: Telegram Username
   home:
     index:
-      scheduler_overview: A light tool for keep track of all your schedules.
+      scheduler_overview: A light tool for keep track of all your schedules
   navbar:
     options:
       profile_settings: Profile settings
