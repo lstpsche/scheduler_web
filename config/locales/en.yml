@@ -9,13 +9,20 @@ en:
         language_code: Language code
         last_name: Last name
         telegram_username: TG username
-
   common:
     password: Password
     popups:
       are_you_sure: Are you sure?
+    scheduler: Scheduler
     scheduler_bot: Scheduler Bot
     telegram_username: Telegram Username
+  home:
+    index:
+      scheduler_overview: A light tool for keep track of all your schedules
+  navbar:
+    options:
+      profile_settings: Profile settings
+      sign_out: Sign out
   navigations:
     back: Back
   weekdays:
