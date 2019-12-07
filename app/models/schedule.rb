@@ -7,6 +7,8 @@ class Schedule < ApplicationRecord
   has_many :users, through: :schedule_users
   has_many :events, dependent: :destroy
 
+  scope :for_user, ->(user) { joins(:schedule_users).where('schedule_users.user_id = (?)', user) }
+
   def events_by_weekday
     events = self.events
 

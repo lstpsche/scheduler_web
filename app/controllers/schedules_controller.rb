@@ -17,6 +17,7 @@ class SchedulesController < ApplicationController
 
   def create
     if schedule.save
+      ScheduleUser.create(schedule: schedule, user: current_user, author: true)
       redirect_to schedules_path
     else
       redirect_back(fallback_location: root_path)
@@ -48,7 +49,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedules
-    @schedules ||= Schedule.all.order('created_at ASC')
+    @schedules ||= Schedule.for_user(current_user).order('created_at ASC')
   end
 
   def schedule_params
