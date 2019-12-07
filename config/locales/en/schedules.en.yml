@@ -1,0 +1,8 @@
+en:
+  schedules:
+    all_schedules: All schedules
+    create_schedule: Create schedule
+    delete: Delete
+    delete_confirmation_text: "Schedule '%{schedule_name}' and all events in it will be completely deleted.\nAre you sure?"
+    edit: Edit
+    show: Show
