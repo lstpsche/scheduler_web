@@ -7,9 +7,12 @@ table.table.table-hover.schedules-listing
       th.add-info{ colspan='4' } = t('schedules.listing.additional_info')
   tbody#schedules-listing
     - schedules.each do |schedule|
-      tr
-        td.name = schedule.name
-        td.add-info = schedule.additional_info
+      tr.schedule-row{ data-id='#{schedule.id}' }
+        = button_to '#', schedule_path(schedule), method: :get, class: 'hidden schedule-link', id: "schedule_#{schedule.id}"
+        td.name
+          span.schedule-name = schedule.name
+        td.add-info
+          span.schedule-add = schedule.additional_info
         td = link_to t('schedules.show'), schedule_path(schedule)
         td = link_to t('schedules.edit'), edit_schedule_path(schedule)
         td = link_to t('schedules.delete'), schedule_path(schedule), method: :delete,
