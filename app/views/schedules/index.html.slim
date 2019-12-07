@@ -1,7 +1,5 @@
 h1 = t('schedules.all_schedules')
 
-= link_to t('schedules.create_schedule'), new_schedule_path
-
 table.table.table-hover
   thead.thead-light
     tr
@@ -16,3 +14,5 @@ table.table.table-hover
         td = link_to t('schedules.edit'), edit_schedule_path(schedule)
         td = link_to t('schedules.delete'), schedule_path(schedule), method: :delete,
           data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
+
+= link_to t('schedules.create_schedule'), new_schedule_path, class: 'btn btn-outline-secondary'
