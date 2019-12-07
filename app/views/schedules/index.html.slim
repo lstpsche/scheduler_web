@@ -1,19 +1,18 @@
-h1 Listing schedules
+h1 = t('schedules.all_schedules')
 
-= link_to 'Create schedule', new_schedule_path
+= link_to t('schedules.create_schedule'), new_schedule_path
 
-table
-  tr
-    th Name
-    th Additional Information
-    th
-    th
-    th
-
-  - schedules.each do |schedule|
+table.table.table-hover
+  thead.thead-light
     tr
-      td = schedule.name
-      td = schedule.additional_info
-      td = link_to 'Show', schedule_path(schedule)
-      td = link_to 'Edit', edit_schedule_path(schedule)
-      td = link_to 'Delete', schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' }
+      th Name
+      th{colspan='4'} Additional Information
+  tbody
+    - schedules.each do |schedule|
+      tr
+        td = schedule.name
+        td = schedule.additional_info
+        td = link_to t('schedules.show'), schedule_path(schedule)
+        td = link_to t('schedules.edit'), edit_schedule_path(schedule)
+        td = link_to t('schedules.delete'), schedule_path(schedule), method: :delete,
+          data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
