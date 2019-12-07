@@ -2,7 +2,7 @@ NEW_SCHEDULE_BUTTON_ROW = '#new-schedule-button-row'
 NEW_SCHEDULE_FORM_ROW = '#new-schedule-form-row'
 
 window.initializeNewScheduleButton = ->
-  $('#new-schedule-button').click (event) ->
+  $(NEW_SCHEDULE_BUTTON_ROW).click (event) ->
     event.preventDefault()
 
     $button = $(this).closest(NEW_SCHEDULE_BUTTON_ROW)
