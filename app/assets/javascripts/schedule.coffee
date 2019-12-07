@@ -4,3 +4,4 @@
 
 $ ->
   window.initializeNewScheduleButton()
+  window.initializeSchedulesTable()
