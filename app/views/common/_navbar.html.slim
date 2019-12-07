@@ -13,4 +13,4 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             = link_to t('navbar.options.profile_settings'), edit_user_registration_path, class: 'dropdown-item'
             = link_to t('navbar.options.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - elsif controller_action != 'sessions#new'
-        = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', size: 'medium', show_custom: true
+        = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', size: 'medium', show_userpic: false
