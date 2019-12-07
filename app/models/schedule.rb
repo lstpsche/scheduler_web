@@ -31,13 +31,9 @@ class Schedule < ApplicationRecord
 
   def customed_new_attrs
     {
-      id: new_uniq_id,
+      id: nil,
       customed: true, customed_by: id,
       created_at: nil, updated_at: nil
     }
-  end
-
-  def new_uniq_id
-    Schedule.pluck(:id).max.next
   end
 end

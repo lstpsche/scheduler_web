@@ -2,16 +2,16 @@
 
 class SchedulesController < ApplicationController
   include TokenAuthenticatable
+  include ScheduleHelper
 
-  before_action :new_schedule, only: %i[new create]
-  helper_method :schedule, :schedules
+  before_action :new_schedule, only: %i[create]
+  before_action :check_schedule_id, only: %i[show]
   before_action :authenticate_user!
+  helper_method :schedule, :schedules, :new_schedule
 
   def index; end
 
   def show; end
-
-  def new; end
 
   def edit; end
 
@@ -19,7 +19,7 @@ class SchedulesController < ApplicationController
     if schedule.save
       redirect_to schedules_path
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 
