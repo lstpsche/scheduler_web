@@ -1,3 +1,33 @@
+table.schedules-listing {
+  td {
+    width: auto;
+  }
+
+  td.actions {
+    width: 15vw;
+
+    * {
+      float: right;
+    }
+  }
+
+  td.add-info {
+    width: 50vw;
+  }
+
+  td.name {
+    width: 35vw;
+  }
+}
+
+#new-schedule-form-row {
+  display: none;
+}
+
+.edit-schedule-form-row {
+  display: none;
+}
+
 .schedule-link.hidden {
   display: none;
 }

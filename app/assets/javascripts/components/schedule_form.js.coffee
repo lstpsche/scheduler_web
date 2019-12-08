@@ -19,7 +19,7 @@ initializeForm = ($form, $button) ->
       showButton($button)
 
 eventIsOnNewScheduleForm = (event) ->
-  $(event.target).closest('#new-schedule-form-row, #new-schedule-button-row').length
+  $(event.target).closest("#{NEW_SCHEDULE_FORM_ROW}, #{NEW_SCHEDULE_BUTTON_ROW}").length
 
 showButton = ($button) ->
   $button.show()

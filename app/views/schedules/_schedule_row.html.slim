@@ -1,10 +1,20 @@
-tr.schedule-row{ data-id='#{schedule.id}' }
+tr.schedule-info-row{ data-id='#{schedule.id}' }
   = button_to '#', schedule_path(schedule), method: :get, class: 'hidden schedule-link', id: "schedule_#{schedule.id}"
   td.name
     span.schedule-name = schedule.name
   td.add-info
     span.schedule-add = schedule.additional_info
-  td = link_to t('schedules.show'), schedule_path(schedule)
-  td = link_to t('schedules.edit'), edit_schedule_path(schedule)
-  td = link_to t('schedules.delete'), schedule_path(schedule), method: :delete,
-    data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
+
+  - dropdown_id = "schedule-#{schedule.id}-options"
+  td.actions.dropdown{ id='#{dropdown_id}' data-toggle='dropdown' expanded='false' }
+    span.btn.btn-outline-secondary = fa_icon 'ellipsis-v'
+    .dropdown-menu{ aria-lebelledby='#{dropdown_id}' }
+      = link_to t('schedules.edit'), edit_schedule_path(schedule), class: 'dropdown-item'
+      = link_to t('schedules.delete'), schedule_path(schedule), class: 'dropdown-item', method: :delete,
+        data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
+
+tr.edit-schedule-form-row
+  = simple_form_for schedule, wrapper: :inline_form, html: { class: 'form-inline', autocomplete: 'off' } do |form|
+    td.name = form.input :name, label: false, placeholder: t('schedules.schedule_name'), input_html: { class: 'mb-2 mr-sm-2' }
+    td.add-info = form.input :additional_info, label: false, placeholder: t('schedules.additional_info'), input_html: { class: 'mb-2 mr-sm-2' }
+    td.actions = form.button :submit, t('schedules.create_schedule'), class: 'btn-outline-secondary mb-2'
