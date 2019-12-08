@@ -6,6 +6,7 @@ en:
     delete: Delete
     delete_confirmation_text: "Schedule '%{schedule_name}' and all events in it will be completely deleted.\nAre you sure?"
     edit: Edit
+    edit_schedule: Edit schedule
     listing:
       schedule_name: Name
       additional_info: Additional information

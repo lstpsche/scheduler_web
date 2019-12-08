@@ -3,7 +3,7 @@ table.schedules-listing {
     width: auto;
   }
 
-  td.actions {
+  td.schedule-actions {
     width: 15vw;
 
     * {
@@ -20,14 +20,12 @@ table.schedules-listing {
   }
 }
 
-#new-schedule-form-row {
-  display: none;
-}
+.schedule-form-row {
+  &.edit {
+    display: none;
+  }
 
-.edit-schedule-form-row {
-  display: none;
-}
-
-.schedule-link.hidden {
-  display: none;
+  &.new {
+    display: none;
+  }
 }
