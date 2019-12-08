@@ -1,22 +1,22 @@
 table.schedules-listing {
   td {
     width: auto;
-  }
 
-  td.schedule-actions {
-    width: 15vw;
+    &.schedule-actions {
+      width: 15vw;
 
-    * {
-      float: right;
+      * {
+        float: right;
+      }
     }
-  }
 
-  td.add-info {
-    width: 50vw;
-  }
+    &.add-info {
+      width: 50vw;
+    }
 
-  td.name {
-    width: 35vw;
+    &.name {
+      width: 35vw;
+    }
   }
 }
 
