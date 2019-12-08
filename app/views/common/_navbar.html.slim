@@ -1,10 +1,8 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  .container-xl
+nav.navbar.navbar-expand.navbar-light.bg-light
+  .container
     = link_to t('common.scheduler'), root_path, class: 'navbar-brand'
-    button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbar-collapse' aria-controls='navbar-collapse' aria-expanded='false' aria-label='Toggle navigation'
-      span.navbar-toggler-icon
 
-    .collapse.navbar-collapse.navbar-nav.mr-auto#navbar-collapse
+    .navbar-nav.ml-auto
       ul.navbar-nav.mr-auto
       - if current_user
         li.nav-item.dropdown
