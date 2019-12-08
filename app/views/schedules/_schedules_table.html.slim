@@ -1,0 +1,10 @@
+table.table.table-hover.schedules-listing
+  thead.thead-light
+    tr
+      th.name = t('schedules.listing.schedule_name')
+      th.add-info = t('schedules.listing.additional_info')
+      th.schedule-actions
+  tbody#schedules-listing
+    - schedules.each do |schedule|
+      = render 'schedule_row', schedule: schedule
+    = render 'new_schedule_short_form'
