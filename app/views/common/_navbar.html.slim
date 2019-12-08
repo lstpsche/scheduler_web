@@ -1,6 +1,7 @@
 nav.navbar.navbar-expand.navbar-light.bg-light
   .container
-    = link_to t('common.scheduler'), root_path, class: 'navbar-brand'
+    - scheduler_path = current_user ? schedules_path : root_path
+    = link_to t('common.scheduler'), scheduler_path, class: 'navbar-brand', method: :get
 
     .navbar-nav.ml-auto
       ul.navbar-nav.mr-auto
