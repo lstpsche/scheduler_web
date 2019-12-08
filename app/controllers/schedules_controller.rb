@@ -13,8 +13,6 @@ class SchedulesController < ApplicationController
 
   def show; end
 
-  def edit; end
-
   def create
     if schedule.save
       ScheduleUser.create(schedule: schedule, user: current_user, author: true)
@@ -26,9 +24,9 @@ class SchedulesController < ApplicationController
 
   def update
     if schedule.update(schedule_params)
-      redirect_to schedule
+      redirect_to schedules_path
     else
-      redirect_back(fallback_location: edit_schedule_path(schedule))
+      redirect_back(fallback_location: root_path)
     end
   end
 

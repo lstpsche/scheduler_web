@@ -9,7 +9,7 @@ tr.schedule-row{ id="schedule-row-#{schedule.id}" data-id='#{schedule.id}' }
     span.btn.btn-outline-secondary = fa_icon 'ellipsis-v'
 
     .dropdown-menu{ aria-lebelledby='#{dropdown_id}' }
-      = link_to t('schedules.edit'), edit_schedule_path(schedule), class: 'schedule-button dropdown-item'
+      = link_to t('schedules.edit'), '#', class: 'schedule-button dropdown-item'
       = link_to t('schedules.delete'), schedule_path(schedule), class: 'dropdown-item', method: :delete,
         data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
 
