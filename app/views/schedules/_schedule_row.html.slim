@@ -2,16 +2,9 @@ tr.schedule-row{ id="schedule-row-#{schedule.id}" data-id='#{schedule.id}' }
   = button_to '#', schedule_path(schedule), method: :get, hidden: true, class: 'schedule-link', id: "schedule_#{schedule.id}"
   td.name = schedule.name
   td.add-info = schedule.additional_info
-
-  - dropdown_id = "schedule-#{schedule.id}-options"
-
-  td.schedule-actions.schedule-button-container.dropdown{ id='#{dropdown_id}' data-toggle='dropdown' expanded='false' }
-    span.btn.btn-outline-secondary = fa_icon 'ellipsis-v'
-
-    .dropdown-menu{ aria-lebelledby='#{dropdown_id}' }
-      = link_to t('schedules.edit'), '#', class: 'schedule-button dropdown-item'
-      = link_to t('schedules.delete'), schedule_path(schedule), class: 'dropdown-item', method: :delete,
-        data: { confirm: t('schedules.delete_confirmation_text', schedule_name: schedule.name) }
+  td.schedule-actions.schedule-button-container
+    = link_to '#', class: 'btn btn-outline-secondary edit schedule-button' do
+      = fa_icon 'pencil'
 
 tr.edit.schedule-form-row{ id="schedule-row-#{schedule.id}" }
   = simple_form_for schedule, wrapper: :inline_form, html: { class: 'form-inline', autocomplete: 'off' } do |form|

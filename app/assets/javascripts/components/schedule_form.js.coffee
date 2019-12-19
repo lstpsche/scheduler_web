@@ -8,15 +8,15 @@ window.initializeSchedulesForms = ->
 
     if $button.hasClass('new')
       initializeNewScheduleFormButton($button)
-    else
-      initializeScheduleFormButton($button)
+    else if $button.hasClass('edit')
+      initializeEditScheduleFormButton($button)
 
 initializeNewScheduleFormButton = ($button) ->
   $button.closest('#new-schedule-form').click ->
     event.preventDefault()
     onScheduleButtonClick($(this))
 
-initializeScheduleFormButton = ($button) ->
+initializeEditScheduleFormButton = ($button) ->
   $button.click ->
     event.preventDefault()
     onScheduleButtonClick($(this))
