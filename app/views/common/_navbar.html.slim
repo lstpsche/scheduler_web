@@ -1,0 +1,15 @@
+nav.navbar.navbar-expand.navbar-light.bg-light
+  .container.col-lg-7.col-md-10.col-sm-11.col-xs-auto
+    - scheduler_path = current_user ? schedules_path : root_path
+    = link_to t('common.scheduler'), scheduler_path, class: 'navbar-brand', method: :get
+
+    .navbar-nav.ml-auto
+      ul.navbar-nav.mr-auto
+      - if current_user
+        li.nav-item.dropdown
+          = link_to current_user.full_name, '#', class: 'nav-link dropdown-toggle', id: 'navbar-dropdown', data: { toggle: 'dropdown', 'expanded': false }
+          .dropdown-menu aria-labelledby='navbar-dropdown'
+            = link_to t('navbar.options.profile_settings'), edit_user_registration_path, class: 'dropdown-item'
+            = link_to t('navbar.options.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
+      - elsif controller_action != 'sessions#new'
+        = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', size: 'medium', show_userpic: false

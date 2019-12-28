@@ -1,0 +1,13 @@
+tr.schedule-row{ data-id='#{schedule.id}' }
+  = button_to '#', schedule_path(schedule), method: :get, hidden: true, class: 'schedule-link', id: "schedule_#{schedule.id}"
+  td.name = schedule.name
+  td.add-info = schedule.additional_info
+  td.schedule-actions.schedule-button-container
+    = link_to '#', class: 'btn btn-outline-secondary edit schedule-button' do
+      = fa_icon 'pencil'
+
+tr.edit.schedule-form-row{ data-id='#{schedule.id}' }
+  = simple_form_for schedule, wrapper: :inline_form, html: { class: 'form-inline', autocomplete: 'off' } do |form|
+    td.name = form.input :name, label: false, placeholder: t('schedules.schedule_name'), input_html: { class: 'mb-2 mr-sm-2' }
+    td.add-info = form.input :additional_info, label: false, placeholder: t('schedules.additional_info'), input_html: { class: 'mb-2 mr-sm-2' }
+    td.schedule-actions = form.button :submit, t('schedules.edit_schedule'), class: 'btn-outline-secondary mb-2'

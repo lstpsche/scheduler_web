@@ -22,6 +22,10 @@ module TokenAuthenticatable
     end
   end
 
+  def token_authenticable?
+    true
+  end
+
   # Security note: controllers with no-CSRF protection must disable the Devise fallback,
   # see #49 for details.
   # acts_as_token_authentication_handler_for User, fallback: :none

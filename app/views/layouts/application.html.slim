@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title SchedulerWeb
+    title = t('common.scheduler_title')
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -9,13 +9,10 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    p.notice = notice
-    p.alert = alert
+    = render 'common/navbar'
 
-    - if current_user
-      p = link_to 'Sign out', destroy_user_session_path, method: :delete
-    - else
-      .telegram-login-button
-        = render 'common/telegram_login_button'
+    = notice
+    = alert
 
-    = yield
+    .container{ class="#{'.col-lg-7.col-md-10.col-sm-11.col-xs-auto' unless controller_name == 'home'}" }
+      = yield

@@ -7,6 +7,8 @@ class Schedule < ApplicationRecord
   has_many :users, through: :schedule_users
   has_many :events, dependent: :destroy
 
+  scope :for_user, ->(user) { joins(:schedule_users).where('schedule_users.user_id = (?)', user) }
+
   def events_by_weekday
     events = self.events
 
@@ -31,13 +33,9 @@ class Schedule < ApplicationRecord
 
   def customed_new_attrs
     {
-      id: new_uniq_id,
+      id: nil,
       customed: true, customed_by: id,
       created_at: nil, updated_at: nil
     }
-  end
-
-  def new_uniq_id
-    Schedule.pluck(:id).max.next
   end
 end

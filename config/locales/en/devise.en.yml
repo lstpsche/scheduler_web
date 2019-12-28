@@ -55,7 +55,9 @@ en:
       unhappy: 'Unhappy?'
     sessions:
       already_signed_out: Signed out successfully.
-      otp_is_fresh: You can reset password only once at 24 hours.
+      sign_in:
+        body: We will not get your phone number or any kind of passwords.
+        header: Log in via Telegram
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
     errors:

@@ -1,0 +1,10 @@
+admin:
+  all_users:
+    header: All Users
+    home_button_text: Home
+    user:
+      first_name: First name
+      id: ID
+      language_code: Language code
+      last_name: Last name
+      telegram_username: TG username

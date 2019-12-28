@@ -4,8 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'active_model_serializers'
+gem 'bootstrap', '~> 4.4.1'
 gem 'dotenv-rails', '~> 2.7.5'
 gem 'devise'
+gem 'font-awesome-rails', '~> 4.7.0.5'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -13,7 +15,7 @@ gem 'rails', '~> 5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'pry-rails'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use SimpleForm for creating forms

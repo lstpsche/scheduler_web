@@ -1,0 +1,26 @@
+en:
+  common:
+    password: Password
+    popups:
+      are_you_sure: Are you sure?
+    scheduler: Scheduler
+    scheduler_bot: Scheduler Bot
+    scheduler_title: Scheduler
+    telegram_username: Telegram Username
+  home:
+    index:
+      scheduler_overview: A light tool for keep track of all your schedules
+  navbar:
+    options:
+      profile_settings: Profile settings
+      sign_out: Sign out
+  navigations:
+    back: Back
+  weekdays:
+    monday: monday
+    tuesday: tuesday
+    wednesday: wednesday
+    thursday: thursday
+    friday: friday
+    saturday: saturday
+    sunday: sunday
