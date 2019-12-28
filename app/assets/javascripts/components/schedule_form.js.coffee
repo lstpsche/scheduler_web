@@ -1,44 +1,53 @@
-SCHEDULE_BUTTON = '.schedule-button'
-SCHEDULE_BUTTON_CONTAINER = '.schedule-button-container'
-SCHEDULE_FORM_ROW = '.schedule-form-row'
+SCHEDULES_FORMS_BUTTONS = '.schedule-button, .new-schedule-button'
+SCHEDULES_ROWS = '.schedule-row, .new-schedule-form'
+SCHEDULES_ROWS_WITHOUT_ID = '.new-schedule-form'
 
 window.initializeSchedulesForms = ->
-  $(SCHEDULE_BUTTON).each ->
-    $button = $(this)
+  $(SCHEDULES_FORMS_BUTTONS).each ->
+    $row = $(this).closest(SCHEDULES_ROWS)
+    scheduleForm = new ScheduleForm($row)
+    scheduleForm.initializeScheduleForm()
 
-    if $button.hasClass('new')
-      initializeNewScheduleFormButton($button)
-    else if $button.hasClass('edit')
-      initializeEditScheduleFormButton($button)
+class ScheduleForm
+  constructor: (@defaultRow) ->
+    @formRow = @defaultRow.next('.schedule-form-row')
+    @button = @defaultRow.find('.schedule-button')
+    @scheduleId = @defaultRow.data('id')
 
-initializeNewScheduleFormButton = ($button) ->
-  $button.closest('#new-schedule-form').click ->
-    event.preventDefault()
-    onScheduleButtonClick($(this))
+  initializeScheduleForm: ->
+    if @button.hasClass('edit')
+      @initializeScheduleFormButton(@button)
+    else if @button.hasClass('new')
+      @initializeScheduleFormButton(@defaultRow)
 
-initializeEditScheduleFormButton = ($button) ->
-  $button.click ->
-    event.preventDefault()
-    onScheduleButtonClick($(this))
+  initializeScheduleFormButton: ($formToggleButton) ->
+    $formToggleButton.click =>
+      event.preventDefault()
+      @onScheduleButtonClick()
 
-onScheduleButtonClick = ($button) ->
-  $buttonContainer = $button.closest('tr')
-  containerId = $buttonContainer.attr('id')
-  $form = $buttonContainer.siblings().filter("[id=#{containerId}]")
+  onScheduleButtonClick: ->
+    @defaultRow.hide()
+    @initializeForm()
 
-  $buttonContainer.hide()
-  showForm($form)
-  initializeForm($form, $buttonContainer)
+  initializeForm: ->
+    @showScheduleForm()
 
-initializeForm = ($form, $buttonContainer) ->
-  $('body').click (event) ->
-    unless eventIsOnNewScheduleForm(event)
-      $form.hide()
-      $buttonContainer.show()
+    $('body').click =>
+      return if @eventIsOnScheduleForm(event)
 
-eventIsOnNewScheduleForm = (event) ->
-  $(event.target).closest("#{SCHEDULE_FORM_ROW}, #{SCHEDULE_BUTTON_CONTAINER}").length
+      @hideScheduleForm()
+      @defaultRow.show()
 
-showForm = ($form) ->
-  $form.show()
-  $form.find('#schedule_name').focus()
+  showScheduleForm: ->
+    @formRow.show()
+    @formRow.find('#schedule_name').focus()
+
+  hideScheduleForm: ->
+    @formRow.off()
+    @formRow.hide()
+
+  eventIsOnScheduleForm: (event) ->
+    $(event.target)
+      .closest("#{SCHEDULES_ROWS}, .schedule-form-row")
+      .filter("[data-id='#{@scheduleId}']")
+      .length
