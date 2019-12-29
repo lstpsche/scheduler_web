@@ -11,8 +11,9 @@ html
   body
     = render 'common/navbar'
 
-    = notice
-    = alert
+    / To be uncommented and designed at SR-126
+    / = notice
+    / = alert
 
     .container{ class="#{'.col-lg-7.col-md-10.col-sm-11.col-xs-auto' unless controller_name == 'home'}" }
       = yield
