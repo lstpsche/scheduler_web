@@ -11,10 +11,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    event.destroy
+
+    redirect_to schedule_path(schedule)
+  end
+
   private
 
   def schedule
     @schedule ||= Schedule.find_by(id: params[:schedule_id])
+  end
+
+  def event
+    @event ||= Event.find_by(id: params[:id])
   end
 
   def event_params

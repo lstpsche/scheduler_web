@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :schedules, except: %i[new edit] do
-    resources :events
+    resources :events, only: %i[create destroy]
   end
 
   post 'bot_login', action: :login, controller: 'bot_login'
