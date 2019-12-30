@@ -1,8 +1,8 @@
-h1 = t('admin.all_users.header')
+h2.admin-users-title = t('admin.all_users.header')
 
-table
+table.table.table-striped
   tr
-    th = t('admin.all_users.user.id')
+    th{scope='col'} = t('admin.all_users.user.id')
     th = t('admin.all_users.user.telegram_username')
     th = t('admin.all_users.user.first_name')
     th = t('admin.all_users.user.last_name')
@@ -10,10 +10,8 @@ table
 
   - @users.each do |user|
     tr
-      th = user.id
-      th = user.username
-      th = user.first_name
-      th = user.last_name
-      th = user.language_code
-
-= link_to t('admin.all_users.home_button_text'), root_path
+      td = user.id
+      td = user.username
+      td = user.first_name
+      td = user.last_name
+      td = user.language_code
