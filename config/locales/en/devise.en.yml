@@ -31,7 +31,7 @@ en:
       destroyed: 'Bye! Your account has been successfully cancelled. We hope to see you again soon.'
       didnt_receive_confirmation: "Didn't receive confirmation instructions?"
       didnt_receive_unlock: "Didn't receive unlock instructions?"
-      edit: 'Edit'
+      edit: Edit profile
       first_time_edit: 'Create new password for your account'
       forgot_password: 'Forgot your password?'
       log_in: 'Log in'
