@@ -11,7 +11,7 @@ module Admin
     private
 
     def validate_user
-      render_404_error unless current_user && current_user.id == 268203409
+      render_404_error unless current_user&.admin?
     end
   end
 end

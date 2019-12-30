@@ -1,8 +1,9 @@
 tr.schedule-actions.new.schedule-button-container#new-schedule-form.new-schedule-form{ data-id='0' }
   td{ colspan='3' } = link_to '#', id: 'new-schedule-button', class: 'btn btn-outline-secondary new schedule-button' do
     = fa_icon 'plus'
+
 tr.new.schedule-form-row#new-schedule-form.new-schedule-form{ data-id='0' }
-  = simple_form_for new_schedule, wrapper: :inline_form, html: { class: 'form-inline', autocomplete: 'off' } do |form|
-    td.name = form.input :name, label: false, placeholder: t('schedules.schedule_name'), input_html: { class: 'mb-2 mr-sm-2' }
-    td.add-info = form.input :additional_info, label: false, placeholder: t('schedules.additional_info'), input_html: { class: 'mb-2 mr-sm-2' }
+  = simple_form_for new_schedule, wrapper: :inline_schedule_form, html: { class: 'form-inline', autocomplete: 'off' } do |form|
+    td.name = form.input :name, placeholder: t('schedules.schedule_name')
+    td.add-info = form.input :additional_info, placeholder: t('schedules.additional_info')
     td.schedule-actions = form.button :submit, t('schedules.create_schedule'), class: 'btn-outline-secondary mb-2'

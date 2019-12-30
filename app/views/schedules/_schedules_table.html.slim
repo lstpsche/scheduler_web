@@ -7,4 +7,5 @@ table.table.table-hover.schedules-table
   tbody#schedules-listing
     - schedules.each do |schedule|
       = render 'schedule_row', schedule: schedule
-    = render 'new_schedule_short_form'
+      = render 'schedule_form_row', schedule: schedule
+    = render 'new_schedule_form'
