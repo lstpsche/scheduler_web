@@ -1,20 +1,9 @@
-h2
-  => t('devise.registrations.edit')
-  | profile
+/ TODO: uncomment and fulfill settings, when there will be settings to setup
 
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |form|
-  = form.error_notification
-  ul.errors_list
-    - resource.errors.full_messages.each do |msg|
-      li.error = msg
+/ h2.user-profile-title
+/   = t('devise.registrations.edit')
 
-  .form-inputs
-    - password_hint = t('devise.registrations.new_password_hint')
-    = form.input :current_password, hint: t('devise.registrations.current_password_hint'), required: true, input_html: { autocomplete: 'current-password' }
-    = form.input :password, hint: password_hint
-    = form.input :password_confirmation
+/ = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |form|
 
-  .form-actions
-    = form.button :submit, t('devise.registrations.update_btn')
-
-= link_to t('navigations.back'), 'javascript:history.back()'
+/   .form-actions
+/     = form.button :submit, t('devise.registrations.update_btn'), class: 'btn btn-outline-secondary'
