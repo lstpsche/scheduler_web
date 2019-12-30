@@ -84,6 +84,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+staging:
+  <<: *default
+  database: <%= ENV['STG_DB_NAME'] %>
+  host: <%= ENV['STG_DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  user: <%= ENV['STG_DB_USER'] %>
+  password: <%= ENV['STG_DB_PASS'] %>
+
 production:
   <<: *default
   database: <%= ENV['DB_NAME'] %>
