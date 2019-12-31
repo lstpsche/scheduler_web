@@ -10,5 +10,13 @@ en:
     listing:
       schedule_name: Schedule title
       additional_info: Additional information
+    new:
+      title: New schedule creation
+      labels:
+        name: Title
+        additional_info: Additional info
+      placeholder:
+        name: Schedule name
+        additional_info: Additional information, description
     schedule_name: Schedule name
     show: Show

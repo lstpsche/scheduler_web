@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
   include TokenAuthenticatable
   include ScheduleHelper
 
-  before_action :new_schedule, only: %i[create]
+  before_action :new_schedule, only: %i[new create]
   before_action :check_schedule_id, only: %i[show]
   before_action :authenticate_user!
   helper_method :schedule, :schedules, :new_schedule
@@ -12,6 +12,8 @@ class SchedulesController < ApplicationController
   def index; end
 
   def show; end
+
+  def new; end
 
   def create
     if schedule.save
@@ -51,7 +53,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    return nil unless params[:schedule]
+    return nil unless params.fetch(:schedule, false)
 
     params.require(:schedule).permit(:name, :additional_info)
   end
