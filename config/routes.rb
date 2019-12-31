@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, only: %i[sessions registrations], controllers: { registrations: 'devise_custom/registrations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :schedules, except: %i[new edit] do
+  resources :schedules, except: %i[edit] do
     resources :events, only: %i[create destroy]
   end
 
