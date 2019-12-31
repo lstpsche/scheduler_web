@@ -15,7 +15,7 @@ module ApplicationHelper
     Rails.application.routes.recognize_path(request.url)
   end
 
-  def clear_get_params
+  def clear_url_params
     return unless request.query_parameters.present?
 
     redirect_to current_path
