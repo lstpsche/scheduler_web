@@ -12,7 +12,6 @@ module TokenAuthenticatable
       # Make the authentication token to be disposable - for example
       renew_auth_token!
       bypass_sign_in(current_user)
-      redirect_to current_path
     end
 
     def renew_auth_token!
