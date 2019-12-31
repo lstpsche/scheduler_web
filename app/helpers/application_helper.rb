@@ -10,4 +10,14 @@ module ApplicationHelper
   def controller_action
     controller_name + '#' + action_name
   end
+
+  def current_path
+    Rails.application.routes.recognize_path(request.url)
+  end
+
+  def clear_get_params
+    return unless request.query_parameters.present?
+
+    redirect_to current_path
+  end
 end
