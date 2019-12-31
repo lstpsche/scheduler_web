@@ -1,0 +1,10 @@
+h2.new-schedule-title.my-3 = t('schedules.new.title')
+
+.new.schedule-form
+  = simple_form_for schedule, wrapper: :vertical_schedule_form, html: { class: 'needs-validation', autocomplete: 'off' } do |form|
+    .name
+      = form.input :name, placeholder: t('schedules.new.placeholder.name'), label: t('schedules.new.labels.name')
+    .add-info
+      = form.input :additional_info, placeholder: t('schedules.new.placeholder.additional_info'), label: t('schedules.new.labels.additional_info')
+    .schedule-actions
+      = form.button :submit, t('schedules.create_schedule'), class: 'btn btn-outline-secondary'
