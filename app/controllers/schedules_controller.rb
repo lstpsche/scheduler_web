@@ -50,7 +50,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedules
-    @schedules ||= Schedule.for_user(current_user).order('created_at ASC')
+    @schedules ||= Schedule.for_user(current_user).order('created_at ASC').paginate(page: params[:page], per_page: 5)
   end
 
   def schedule_params
