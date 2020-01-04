@@ -9,7 +9,9 @@ class BotLoginController < ApplicationController
     return head :no_content if user_signed_in?
 
     user = find_or_create_user(user_params)
+
     sign_in(user)
+    flash[:notice] = I18n.t('devise.sessions.signed_in')
   rescue StandardError
     head :bad_request
   end
