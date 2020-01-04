@@ -7,13 +7,13 @@ html
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = alertify_flash
 
   body
     = render 'common/navbar'
 
-    / To be uncommented and designed at SR-126
-    / = notice
-    / = alert
+    = notice
+    = alert
 
     .container{ class="#{'.col-lg-7.col-md-10.col-sm-11.col-xs-auto' unless controller_name == 'home'}" }
       = yield
