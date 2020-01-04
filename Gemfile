@@ -55,6 +55,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rubyzip', '>= 1.3.0'
 
+gem 'will_paginate', '~> 3.2.1'
 
 group :development, :test do
   gem 'pry'
