@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def attach_avatar_from_url(url:)
     require 'open-uri'
 
-    image = open(url)
+    image = URI.parse(url).open
     avatar.attach(io: image, filename: "#{id}_#{username}_avatar.jpg")
   end
 
