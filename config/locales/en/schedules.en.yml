@@ -18,5 +18,8 @@ en:
       placeholder:
         name: Schedule name
         additional_info: Additional information, description
+    notice:
+      created: 'Schedule was successfully created'
+      updated: 'Schedule was successfully updated'
     schedule_name: Schedule name
     show: Show
