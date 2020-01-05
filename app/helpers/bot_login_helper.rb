@@ -6,14 +6,20 @@ module BotLoginHelper
   end
 
   def create_user_with(user_params)
-    user = User.create(
+    user = create_user(user_params)
+    user.attach_avatar_from_url(url: user_params[:avatar_url])
+
+    user
+  end
+
+  private
+
+  def create_user(user_params)
+    User.create(
       id: user_params[:id],
       username: user_params[:username],
       first_name: user_params[:first_name],
       last_name: user_params[:last_name]
     )
-    user.attach_avatar_from_url(url: user_params[:avatar_url])
-
-    user
   end
 end
