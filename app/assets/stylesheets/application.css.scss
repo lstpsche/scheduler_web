@@ -18,6 +18,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+@import "alertify";
+@import "alertify/default";
+@import "alertify/bootstrap";
+
 body {
   min-height: 100vh;
   min-width: 100vw;

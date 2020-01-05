@@ -1,0 +1,22 @@
+div.alertify-notifier {
+  &.ajs-bottom {
+    bottom: 15px;
+  }
+
+  &.ajs-right {
+    right: -60px;
+  }
+
+  &.ajs-top {
+    top: 60px;
+  }
+
+  .ajs-message {
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+
+    &.ajs-success {
+      // TODO: fill this styles in [SR-175]
+    }
+  }
+}
