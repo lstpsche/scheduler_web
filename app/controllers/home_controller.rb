@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :redirect_to_schedules, only: %i(index)
+  before_action :redirect_to_schedules, only: %i[index]
 
   def index; end
 
