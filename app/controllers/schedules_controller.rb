@@ -2,7 +2,7 @@
 
 class SchedulesController < ApplicationController
   include TokenAuthenticatable
-  include ScheduleHelper
+  include SchedulesHelper
 
   before_action :authenticate_user!
   before_action :clear_url_params, only: %i[new]
@@ -61,5 +61,11 @@ class SchedulesController < ApplicationController
     return nil unless params.fetch(:schedule, false)
 
     params.require(:schedule).permit(:name, :additional_info)
+  end
+
+  def check_schedule_id
+    id = params[:id]
+
+    render_404_error unless id.to_i.to_s == id
   end
 end
