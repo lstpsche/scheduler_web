@@ -2,7 +2,7 @@
 
 class SchedulesController < ApplicationController
   include TokenAuthenticatable
-  include ScheduleHelper
+  include SchedulesHelper
 
   before_action :authenticate_user!
   before_action :clear_url_params, only: %i[new]
