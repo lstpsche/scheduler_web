@@ -18,8 +18,7 @@ class SchedulesController < ApplicationController
 
   def create
     if schedule.save_new(current_user)
-      flash[:notice] = I18n.t('schedules.notice.created')
-      redirect_to schedules_path
+      redirect_to schedules_path, flash: { notice: I18n.t('schedules.notice.created') }
     else
       redirect_back(fallback_location: root_path)
     end
@@ -27,8 +26,7 @@ class SchedulesController < ApplicationController
 
   def update
     if schedule.update(schedule_params)
-      flash[:notice] = I18n.t('schedules.notice.updated')
-      redirect_to schedules_path
+      redirect_to schedules_path, flash: { notice: I18n.t('schedules.notice.updated') }
     else
       redirect_back(fallback_location: root_path)
     end
