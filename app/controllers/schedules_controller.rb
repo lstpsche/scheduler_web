@@ -4,11 +4,11 @@ class SchedulesController < ApplicationController
   include TokenAuthenticatable
   include ScheduleHelper
 
+  before_action :authenticate_user!
   before_action :clear_url_params, only: %i[new]
   before_action :new_schedule, only: %i[new create]
   before_action :check_schedule_id, only: %i[show]
-  before_action :authenticate_user!
-  helper_method :schedule, :schedules, :new_schedule
+  helper_method :schedule, :schedules, :new_schedule, :paginated_schedules
 
   def index; end
 
@@ -18,7 +18,8 @@ class SchedulesController < ApplicationController
 
   def create
     if schedule.save_new(current_user)
-      redirect_to schedules_path, flash: { notice: I18n.t('schedules.notice.created') }
+      flash[:notice] = I18n.t('schedules.notice.created')
+      redirect_to action: :index, page: paginated_schedules.total_pages
     else
       redirect_back(fallback_location: root_path)
     end
@@ -26,7 +27,7 @@ class SchedulesController < ApplicationController
 
   def update
     if schedule.update(schedule_params)
-      redirect_to schedules_path, flash: { notice: I18n.t('schedules.notice.updated') }
+      redirect_to schedules_path, notice: I18n.t('schedules.notice.updated')
     else
       redirect_back(fallback_location: root_path)
     end
@@ -49,7 +50,11 @@ class SchedulesController < ApplicationController
   end
 
   def schedules
-    @schedules ||= Schedule.for_user(current_user).order('created_at ASC').paginate(page: params[:page], per_page: 5)
+    @schedules ||= Schedule.for_user(current_user).order('created_at ASC')
+  end
+
+  def paginated_schedules
+    @paginated_schedules ||= schedules.paginate(page: params[:page], per_page: 5)
   end
 
   def schedule_params
