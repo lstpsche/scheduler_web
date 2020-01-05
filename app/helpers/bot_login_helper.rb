@@ -5,12 +5,15 @@ module BotLoginHelper
     User.find_by(id: user_params[:id]).presence || create_user_with(user_params)
   end
 
-  def create_user_with(user)
-    User.create(
-      id: user[:id],
-      username: user[:username],
-      first_name: user[:first_name],
-      last_name: user[:last_name]
+  def create_user_with(user_params)
+    user = User.create(
+      id: user_params[:id],
+      username: user_params[:username],
+      first_name: user_params[:first_name],
+      last_name: user_params[:last_name]
     )
+    user.attach_avatar_from_url(url: user_params[:avatar_url])
+
+    user
   end
 end
