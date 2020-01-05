@@ -19,6 +19,6 @@ class BotLoginController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :username, :first_name, :last_name)
+    params.require(:user).permit(:id, :username, :first_name, :last_name, :avatar_url)
   end
 end
