@@ -1,10 +1,8 @@
-- wrapper_mappings = { time: :horizontal_multi_select }
-
-= simple_form_for [schedule, schedule.events.build], html: { autocomplete: 'off' }, wrapper: :horizontal_form, wrapper_mappings: wrapper_mappings do |form|
+= simple_form_for [schedule, schedule.events.build], html: { class: 'event full-form', autocomplete: 'off' }, wrapper: :horizontal_form do |form|
 
   = form.input :weekday, collection: weekdays_collection
-  = form.input :time, as: :time
-  = form.input :info, label: 'Name'
+  = form.input :time, input_html: { class: 'event-date time-picker' }
+  = form.input :info, label: 'Event title'
   = form.input :additional_info
 
   = form.button :submit, class: 'btn btn-outline-secondary'
