@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def time
-    permitted_params['time(4i)'] + ':' + permitted_params['time(5i)']
+    permitted_params[:time]
   end
 
   def weekday
