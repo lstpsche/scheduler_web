@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require alertify
+//= require pickerjs/dist/picker
 //= require alertify/confirm-modal
 //= require_tree ./components
 //= require_tree ./services
