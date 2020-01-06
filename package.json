@@ -1,5 +1,7 @@
 {
   "name": "scheduler_web",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "pickerjs": "^1.2.1"
+  }
 }
