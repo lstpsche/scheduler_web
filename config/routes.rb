@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  devise_for :users, only: %i[sessions registrations], controllers: { registrations: 'devise_custom/registrations' }
+  devise_for :users, only: %i[sessions registrations], controllers: { registrations: 'devise_custom/registrations' },
+    path: '', path_names: { sign_in: 'sign_in', sign_out: 'sign_out' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :schedules, except: %i[edit] do
