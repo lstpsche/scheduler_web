@@ -2,6 +2,6 @@ tr.schedule-row{ data-id='#{schedule.id}' }
   = button_to '#', schedule_path(schedule), method: :get, hidden: true, class: 'schedule-link', id: "schedule_#{schedule.id}"
   td.name = schedule.name
   td.add-info = schedule.additional_info
-  td.schedule-actions.schedule-button-container
+  td.schedule-actions
     = link_to '#', class: 'btn btn-outline-secondary edit schedule-button' do
       = fa_icon 'pencil'

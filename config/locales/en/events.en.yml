@@ -1,5 +1,13 @@
 en:
   events:
+    buttons:
+      create:
+        full: Create event
+        short: Create
+      update: Update
+    flash:
+      notices:
+        updated: 'Event was updated successfully.'
     headers:
       add_event: 'Add event:'
     labels:

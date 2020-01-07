@@ -3,11 +3,8 @@ h2.schedule-title = schedule.name
 p = schedule.additional_info
 
 .schedule-events
-  - schedule.events_by_weekday.each do |weekday, events|
-    = render partial: 'events/events_by_weekday', locals: { weekday: weekday, events: events }
-    / To be returned (or removed) somewhen further
-    / h4 Add event at #{weekday}
-    / = render partial: 'events/short_form', locals: { weekday: weekday }
+  = render 'events/events_table', schedule: schedule
+
 br/
 br/
 
