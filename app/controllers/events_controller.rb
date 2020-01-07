@@ -13,8 +13,7 @@ class EventsController < ApplicationController
 
   def update
     if event.update(event_params)
-      flash[:notice] = 'Event was updated.'
-      redirect_to schedule_path(schedule)
+      redirect_to schedule_path(schedule), flash: { notice: I18n.t('events.flash.notices.updated') }
     else
       redirect_back(fallback_location: root_path)
     end
