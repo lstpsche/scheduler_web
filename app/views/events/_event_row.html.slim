@@ -1,0 +1,11 @@
+tr.event.event-row
+  th.time = event.time
+  td.info
+    = event.info
+    em<
+      | (
+      | #{event.additional_info}
+      | )
+  td.actions.col-1
+    = link_to schedule_event_path(event.schedule_id, event), class: 'btn btn-outline-secondary', method: :delete, data: { confirm: 'Delete event?' } do
+      = fa_icon 'times'
