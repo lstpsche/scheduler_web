@@ -1,8 +1,8 @@
 = simple_form_for [schedule, schedule.events.build], html: { class: 'event full-form needs-validation', autocomplete: 'off' }, wrapper: :horizontal_form do |form|
 
   = form.input :weekday, collection: weekdays_collection, label: t('events.labels.weekday'), prompt: false
-  = form.input :time, required: true, label: t('events.labels.time'), placeholder: t('events.placeholders.time'), input_html: { class: 'event-date time-picker' }
-  = form.input :info, required: true, label: t('events.labels.info'), placeholder: t('events.placeholders.info')
+  = form.input :time, label: t('events.labels.time'), placeholder: t('events.placeholders.time'), input_html: { class: 'event-date time-picker' }
+  = form.input :info, label: t('events.labels.info'), placeholder: t('events.placeholders.info')
   = form.input :additional_info, label: t('events.labels.add_info'), placeholder: t('events.placeholders.add_info')
 
   = form.button :submit, class: 'btn btn-outline-secondary'

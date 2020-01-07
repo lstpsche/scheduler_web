@@ -1,5 +1,5 @@
 SCHEDULES_FORMS_BUTTONS = '.schedule-button, .new-schedule-button'
-@SUBJECT_ROWS = '.schedule-row, .new.schedule-form'
+SUBJECT_ROWS = '.schedule-row, .new.schedule-form'
 
 window.initializeSchedulesShortForms = ->
   $(SCHEDULES_FORMS_BUTTONS).each ->
@@ -15,3 +15,9 @@ class ScheduleShortForm extends BaseShortForm
     super('#schedule_name', ($element) ->
       $element.focus()
     )
+
+  eventIsOnForm: (event) ->
+    $(event.target)
+      .closest("#{SUBJECT_ROWS}, .form-row")
+      .filter("[data-id='#{@subjectId}']")
+      .length

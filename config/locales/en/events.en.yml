@@ -1,5 +1,10 @@
 en:
   events:
+    buttons:
+      create:
+        full: Create event
+        short: Create
+      update: Update
     headers:
       add_event: 'Add event:'
     labels:

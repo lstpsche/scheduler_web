@@ -34,10 +34,5 @@ class @BaseShortForm
     focusFieldAction(@formRow.find(focusField))
 
   hideForm: ->
+    $('body').off()
     @formRow.off().hide()
-
-  eventIsOnForm: (event) ->
-    $(event.target)
-      .closest("#{SUBJECT_ROWS}, .form-row")
-      .filter("[data-id='#{@subjectId}']")
-      .length

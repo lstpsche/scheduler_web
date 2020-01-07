@@ -287,6 +287,20 @@ SimpleForm.setup do |config|
     b.optional :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
+  config.wrappers :inline_event_form, tag: 'span', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.use :input, class: 'form-control mb-2 mr-sm-2', label: false
+    b.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    b.optional :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  end
+
   # inline input for boolean
   config.wrappers :inline_boolean, tag: 'span', class: 'form-check mb-2 mr-sm-2', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
