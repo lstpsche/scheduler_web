@@ -1,4 +1,4 @@
-tr.edit.schedule-form-row{ data-id='#{schedule.id}' }
+tr.edit.schedule.form-row{ data-id='#{schedule.id}' }
   = simple_form_for schedule, wrapper: :inline_schedule_form, html: { class: 'form-inline needs-validation', autocomplete: 'off' } do |form|
     td.name = form.input :name, placeholder: t('schedules.schedule_name')
     td.add-info = form.input :additional_info, placeholder: t('schedules.additional_info')
