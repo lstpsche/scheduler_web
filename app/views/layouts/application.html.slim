@@ -17,5 +17,5 @@ html
     = notice
     = alert
 
-    .container{ class="#{'.col-lg-7.col-md-10.col-sm-11.col-xs-auto' unless controller_name == 'home'}" }
+    .container{ class="#{'col-lg-7 col-md-10 col-sm-11 col-xs-auto' unless controller_name == 'home'}" }
       = yield
