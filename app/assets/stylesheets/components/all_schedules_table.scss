@@ -31,9 +31,25 @@ table.schedules-table {
 .schedule.form-row {
   &.edit {
     display: none;
+
+    td.add-info {
+      width: 50vw;
+    }
+
+    td.name {
+      width: 35vw;
+    }
   }
 
   &.new {
     display: none;
+  }
+
+  .schedule-actions {
+    width: 15vw;
+
+    * {
+      float: right;
+    }
   }
 }
