@@ -34,5 +34,4 @@ class @BaseShortForm
     focusFieldAction(@formRow.find(focusField))
 
   hideForm: ->
-    $('body').off()
     @formRow.off().hide()

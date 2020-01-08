@@ -3,4 +3,4 @@ tr.edit.schedule.form-row{ data-id='#{schedule.id}' }
     td.name = form.input :name, placeholder: t('schedules.schedule_name')
     td.add-info = form.input :additional_info, placeholder: t('schedules.additional_info')
 
-    td.schedule-actions = form.button :submit, t('schedules.edit_schedule'), class: 'btn-outline-secondary mb-2'
+    td.schedule-actions.col-2 = form.button :submit, t('schedules.edit'), class: 'btn-outline-secondary mb-2'
