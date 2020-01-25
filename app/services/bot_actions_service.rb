@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: bad naming, bad use of "service"
+# nned to think of better usage and architecture
 class BotActionsService
   attr_reader :user
 

@@ -1,0 +1,11 @@
+.schedules.pagination {
+  justify-content: center;
+
+  li {
+    &.page-item.active {
+      span.page-link {
+        // TODO: fill with styles in [SR-173]
+      }
+    }
+  }
+}

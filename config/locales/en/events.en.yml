@@ -1,0 +1,21 @@
+en:
+  events:
+    buttons:
+      create:
+        full: Create event
+        short: Create
+      update: Update
+    flash:
+      notices:
+        updated: 'Event was updated successfully.'
+    headers:
+      add_event: 'Add event:'
+    labels:
+      add_info: Additional info
+      info: Event title
+      time: Time
+      weekday: Weekday
+    placeholders:
+      add_info: More detailed description or some note for event
+      info: What is the event's title?
+      time: When will it be?
