@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  window.initializeSchedulesForms()
+  window.initializeSchedulesShortForms()
   window.initializeSchedulesTable()

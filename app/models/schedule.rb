@@ -9,6 +9,12 @@ class Schedule < ApplicationRecord
 
   scope :for_user, ->(user) { joins(:schedule_users).where('schedule_users.user_id = (?)', user) }
 
+  def save_new(user)
+    return false unless save
+
+    ScheduleUser.create(schedule: self, user: user, author: true)
+  end
+
   def events_by_weekday
     events = self.events
 

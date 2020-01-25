@@ -1,0 +1,8 @@
+tr.edit.event.form-row{ data-id='#{event.id}' }
+  = simple_form_for event, wrapper: :inline_event_form, url: schedule_event_path(event.schedule_id, event), html: { class: 'form-inline needs-validation', autocomplete: 'off' } do |form|
+    = form.input :weekday, value: event.weekday, input_html: { hidden: true }
+    td.time = form.input :time, placeholder: t('events.placeholders.time'), input_html: { class: 'event-date time-picker' }
+    td.info = form.input :info, placeholder: t('events.placeholders.info')
+    td.additional_info = form.input :additional_info, placeholder: t('events.placeholders.add_info')
+
+    td.event-actions = form.button :submit, t('events.buttons.update'), class: 'btn btn-outline-secondary'

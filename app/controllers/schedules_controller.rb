@@ -2,13 +2,13 @@
 
 class SchedulesController < ApplicationController
   include TokenAuthenticatable
-  include ScheduleHelper
+  include SchedulesHelper
 
+  before_action :authenticate_user!
   before_action :clear_url_params, only: %i[new]
   before_action :new_schedule, only: %i[new create]
   before_action :check_schedule_id, only: %i[show]
-  before_action :authenticate_user!
-  helper_method :schedule, :schedules, :new_schedule
+  helper_method :schedule, :schedules, :new_schedule, :paginated_schedules
 
   def index; end
 
@@ -17,9 +17,9 @@ class SchedulesController < ApplicationController
   def new; end
 
   def create
-    if schedule.save
-      ScheduleUser.create(schedule: schedule, user: current_user, author: true)
-      redirect_to schedules_path
+    if schedule.save_new(current_user)
+      flash[:notice] = I18n.t('schedules.notice.created')
+      redirect_to action: :index, page: paginated_schedules.total_pages
     else
       redirect_back(fallback_location: root_path)
     end
@@ -27,7 +27,7 @@ class SchedulesController < ApplicationController
 
   def update
     if schedule.update(schedule_params)
-      redirect_to schedules_path
+      redirect_to schedules_path, notice: I18n.t('schedules.notice.updated')
     else
       redirect_back(fallback_location: root_path)
     end
@@ -53,9 +53,19 @@ class SchedulesController < ApplicationController
     @schedules ||= Schedule.for_user(current_user).order('created_at ASC')
   end
 
+  def paginated_schedules
+    @paginated_schedules ||= schedules.paginate(page: params[:page], per_page: 5)
+  end
+
   def schedule_params
     return nil unless params.fetch(:schedule, false)
 
     params.require(:schedule).permit(:name, :additional_info)
+  end
+
+  def check_schedule_id
+    id = params[:id]
+
+    render_404_error unless id.to_i.to_s == id
   end
 end

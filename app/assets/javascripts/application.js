@@ -13,9 +13,10 @@
 //= require jquery3
 //= require jquery_ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree ./components
-//= require_tree ./services
+//= require ./components/forms/base_short_form
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+//= require alertify
+//= require pickerjs/dist/picker
+//= require alertify/confirm-modal

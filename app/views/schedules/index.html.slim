@@ -1,3 +1,9 @@
 h1.my-4.text-center = t('schedules.all_schedules')
 
-= render 'schedules_table', schedules: schedules
+= render 'schedules_table', schedules: paginated_schedules
+
+= will_paginate paginated_schedules,
+  renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
+  list_classes: %w(schedules pagination),
+  next_label: fa_icon('angle-double-right'),
+  previous_label: fa_icon('angle-double-left')

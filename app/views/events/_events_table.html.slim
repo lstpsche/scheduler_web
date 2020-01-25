@@ -1,0 +1,8 @@
+table.table.table-sm
+  tbody
+    - schedule.events_by_weekday.each do |weekday, events|
+      tr.weekday
+        th = weekday.capitalize
+      tr.weekday-events
+        td
+          = render 'events/weekday_events_table', events: events

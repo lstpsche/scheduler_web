@@ -5,15 +5,17 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = alertify_flash
+
+    meta name='viewport' content='width=device-width, initial-scale=1'
 
   body
     = render 'common/navbar'
 
-    / To be uncommented and designed at SR-126
-    / = notice
-    / = alert
+    = notice
+    = alert
 
-    .container{ class="#{'.col-lg-7.col-md-10.col-sm-11.col-xs-auto' unless controller_name == 'home'}" }
+    .container{ class="#{'col-lg-7 col-md-10 col-sm-11 col-xs-auto' unless controller_name == 'home'}" }
       = yield
