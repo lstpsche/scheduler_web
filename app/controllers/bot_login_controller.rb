@@ -10,7 +10,7 @@ class BotLoginController < ApplicationController
 
     return false unless sign_in(user)
 
-    update_tg_avatar_url
+    user.update_tg_avatar_url(user_params[:avatar_url])
     true
   rescue StandardError
     head :bad_request
@@ -20,12 +20,6 @@ class BotLoginController < ApplicationController
 
   def user
     @user ||= User.find_by(id: user_params[:id]) || create_user_with(user_params)
-  end
-
-  def update_tg_avatar_url
-    return if user.tg_avatar_url == user_params[:avatar_url]
-
-    user.update(tg_avatar_url: user_params[:avatar_url])
   end
 
   def user_params
