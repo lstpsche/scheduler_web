@@ -19,14 +19,18 @@ class User < ApplicationRecord
   has_many :schedules, through: :schedule_users
 
   def attach_avatar_from_url(url:)
-    require 'open-uri'
-
-    image = URI.parse(url).open
+    image = ImageOptimizer.new(url: url).optimized_image
     avatar.attach(io: image, filename: "#{id}_#{username}_avatar.jpg")
   end
 
   def full_name
     first_name + ' ' + last_name
+  end
+
+  def update_tg_avatar_url(new_avatar_url)
+    return if tg_avatar_url == new_avatar_url
+
+    update(tg_avatar_url: new_avatar_url)
   end
 
   # it's needed to escape devise's extreme depending on emails
