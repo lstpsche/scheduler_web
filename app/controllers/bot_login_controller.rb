@@ -8,15 +8,25 @@ class BotLoginController < ApplicationController
   def login
     return head :no_content if user_signed_in?
 
-    sign_in(user)
+    update_tg_avatar_url if signed_in
   rescue StandardError
     head :bad_request
   end
 
   private
 
+  def signed_in
+    @signed_in ||= sign_in(user)
+  end
+
   def user
     @user ||= User.find_by(id: user_params[:id]).presence || create_user_with(user_params)
+  end
+
+  def update_tg_avatar_url
+    return if user.tg_avatar_url == user_params[:avatar_url]
+
+    user.update(tg_avatar_url: user_params[:avatar_url])
   end
 
   def user_params
@@ -35,7 +45,8 @@ class BotLoginController < ApplicationController
       id: user_params[:id],
       username: user_params[:username],
       first_name: user_params[:first_name],
-      last_name: user_params[:last_name]
+      last_name: user_params[:last_name],
+      tg_avatar_url: user_params[:avatar_url]
     )
   end
 end
