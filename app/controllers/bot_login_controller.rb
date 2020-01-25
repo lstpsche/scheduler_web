@@ -8,19 +8,18 @@ class BotLoginController < ApplicationController
   def login
     return head :no_content if user_signed_in?
 
-    update_tg_avatar_url if signed_in
+    return false unless sign_in(user)
+
+    update_tg_avatar_url
+    true
   rescue StandardError
     head :bad_request
   end
 
   private
 
-  def signed_in
-    @signed_in ||= sign_in(user)
-  end
-
   def user
-    @user ||= User.find_by(id: user_params[:id]).presence || create_user_with(user_params)
+    @user ||= User.find_by(id: user_params[:id]) || create_user_with(user_params)
   end
 
   def update_tg_avatar_url
