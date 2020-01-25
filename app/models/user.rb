@@ -31,6 +31,8 @@ class User < ApplicationRecord
     return if tg_avatar_url == new_avatar_url
 
     update(tg_avatar_url: new_avatar_url)
+    # [#SR-194] unless custom_avatar.present?
+    attach_avatar_from_url(url: new_avatar_url)
   end
 
   # it's needed to escape devise's extreme depending on emails
