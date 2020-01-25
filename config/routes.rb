@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'home#index'
+  unauthenticated do
+    root to: 'home#index'
+  end
 
-  devise_for :users, only: %i[sessions registrations], controllers: { registrations: 'devise_custom/registrations' },
+  authenticated do
+    root to: 'schedules#index'
+  end
+
+  devise_for :users, only: %i[sessions registrations],
+    controllers: {
+      registrations: 'devise_custom/registrations',
+      sessions: 'devise_custom/sessions'
+    },
     path: '', path_names: { sign_in: 'sign_in', sign_out: 'sign_out' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :schedules, except: %i[edit] do
     resources :events, only: %i[create update destroy]
