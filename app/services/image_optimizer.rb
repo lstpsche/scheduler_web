@@ -8,7 +8,7 @@ class ImageOptimizer
   end
 
   def optimized_image
-    image.resize('100x100')
+    image.quality('90').resize('300x300')
 
     image_file
   end
