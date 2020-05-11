@@ -1,0 +1,15 @@
+tr {
+  &.disabled-row {
+    pointer-events: none;
+    background-color: #e9ecef;
+
+    input {
+      background-color: #e9ecef;
+      box-shadow: none;
+    }
+
+    button {
+      box-shadow: none;
+    }
+  }
+}

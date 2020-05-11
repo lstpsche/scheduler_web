@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class HashSerializer < ActiveModel::Serializer
+class HashSerializer
   def self.dump(hash)
-    hash.to_json
+    hash.serialized_hash
   end
 
   def self.load(hash)

@@ -15,6 +15,12 @@ class Schedule < ApplicationRecord
     ScheduleUser.create(schedule: self, user: user, author: true)
   end
 
+  # TODO: will change after adding better time handling [SR-219]
+  def events_order_by_time
+    events.sort { |event1, event2| Time.parse(event1.time) <=> Time.parse(event2.time) }
+  end
+
+  # TODO:  REDUNDANT
   def events_by_weekday
     events = self.events
 
@@ -37,6 +43,7 @@ class Schedule < ApplicationRecord
     events.select { |event| event.weekday == weekday }.presence
   end
 
+  # TODO:   PROBABLY  NOT NEEDED
   def customed_new_attrs
     {
       id: nil,

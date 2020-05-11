@@ -1,20 +1,22 @@
-nav.navbar.navbar-expand.navbar-light.bg-light
-  .container.col-lg-7.col-md-10.col-sm-11.col-xs-auto
-    = link_to t('common.scheduler'), root_path, class: 'navbar-brand', method: :get
+/ nav.navbar.navbar-expand.navbar-light.bg-light
+/   .container.col-lg-7.col-md-10.col-sm-11.col-xs-auto
+/     = link_to t('common.scheduler'), root_path, class: 'navbar-brand', method: :get
 
-    .navbar-nav.ml-auto
-      ul.navbar-nav.mr-auto
-      - if current_user&.admin?
-        li.nav-item.dropdown.mr-2
-          = link_to 'Admin panel', '#', class: 'nav-link dropdown-toggle', id: 'navbar-admin-dropdown', data: { toggle: 'dropdown', 'expanded': false }
-          .dropdown-menu aria-labelledby='navbar-admin-dropdown'
-            = link_to 'Users table', users_path, class: 'dropdown-item'
-      - if current_user
-        li.nav-item.dropdown
-          = link_to '#', class: 'nav-link dropdown-toggle', id: 'navbar-user-dropdown', data: { toggle: 'dropdown', 'expanded': false } do
-            span.user-full-name = current_user.full_name
-            = user_avatar(user: current_user, size: 25)
-          .dropdown-menu aria-labelledby='navbar-user-dropdown'
-            = link_to t('navbar.options.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
-      - elsif controller_action != 'sessions#new'
-        = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', size: 'medium', show_userpic: false
+/     .navbar-nav.ml-auto
+/       ul.navbar-nav.mr-auto
+/       - if current_user&.admin?
+/         li.nav-item.dropdown.mr-2
+/           = link_to 'Admin panel', '#', class: 'nav-link dropdown-toggle', id: 'navbar-admin-dropdown', data: { toggle: 'dropdown', 'expanded': false }
+/           .dropdown-menu aria-labelledby='navbar-admin-dropdown'
+/             = link_to 'Users table', users_path, class: 'dropdown-item'
+/       - if current_user
+
+        / li.nav-item.dropdown
+        /   = link_to '#', class: 'nav-link dropdown-toggle', id: 'navbar-user-dropdown', data: { toggle: 'dropdown', 'expanded': false } do
+        /     span.user-full-name = current_user.full_name
+        /     = user_avatar(user: current_user, size: 25)
+        /   .dropdown-menu aria-labelledby='navbar-user-dropdown'
+        /     = link_to t('navbar.options.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
+/
+/       - elsif controller_action != 'sessions#new'
+/         = render 'common/telegram_login_button', button_class: 'nav-item my-2 my-md-0', size: 'medium', show_userpic: false

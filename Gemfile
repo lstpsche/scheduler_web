@@ -3,10 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'active_model_serializers'
 gem 'bootstrap', '~> 4.4.1'
 gem 'dotenv-rails', '~> 2.7.5'
 gem 'devise'
+gem 'devise-jwt'
+gem 'fast_jsonapi'
 gem 'font-awesome-rails', '~> 4.7.0.5'
 gem 'jquery-rails', '~> 4.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -16,6 +17,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'pry-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
+# React JS
+gem 'react-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use SimpleForm for creating forms
@@ -25,6 +28,8 @@ gem 'simple_token_authentication', '~> 1.17.0'
 gem 'slim-rails'
 # Gem for telegram bot commands
 gem 'telegram-bot-ruby'
+# I18n for JS
+gem 'i18n-js'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -51,9 +56,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rubyzip', '>= 1.3.0'
 
-
 gem 'alertifyjs-rails'
 gem 'will_paginate', '~> 3.2.1'
+
+gem 'webpacker'
 
 group :development, :test do
   gem 'pry'

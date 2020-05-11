@@ -1,0 +1,18 @@
+nav.navbar.global-navbar {
+  z-index: 100;
+}
+
+nav.navbar {
+  a#navbar-user-dropdown {
+    align-items: center;
+    display: flex;
+
+    img#navbar-user-avatar {
+      margin-left: 5px;
+    }
+  }
+
+  button.dropdown-header {
+    box-shadow: none;
+  }
+}

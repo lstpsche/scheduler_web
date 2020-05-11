@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 module Validators
-  class EventValidator < Base
+  class EventValidator < ActiveModel::Validator
     attr_reader :fields, :event
 
-    def initialize(fields)
-      @fields = fields
+    def initialize(*args)
+      super
+      @fields = options[:fields]
       @errors = []
     end
 
@@ -17,10 +18,6 @@ module Validators
     end
 
     private
-
-    def validate_info
-      @errors << 'Event should have a name.' unless event.info.present?
-    end
 
     def validate_time
       hours, minutes = hours_and_minutes
@@ -36,10 +33,6 @@ module Validators
     def check_time_valid(hours, minutes)
       @errors << 'Hours out of range.' if hours > 23 || hours.negative?
       @errors << 'Minutes out of range.' if minutes > 59 || minutes.negative?
-    end
-
-    def validate_weekday
-      @errors << 'Weekday should be a valid weekday name.' unless I18n.t('weekdays').values.include? event.weekday
     end
   end
 end

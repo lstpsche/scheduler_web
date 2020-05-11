@@ -7,11 +7,16 @@ en:
     scheduler_bot: Scheduler Bot
     scheduler_title: Scheduler
     telegram_username: Telegram Username
+  errors:
+    action_not_performed: Action was not performed
+    cant_be_blank: can't be blank
+    record_not_found: Record not found
+    internal_server_error: Internal server error. Please, try again later.
   home:
-    index:
-      scheduler_overview: A light tool for keeping track of your schedules
+    scheduler_overview: A light tool for keeping track of your schedules
   navbar:
     options:
+      admin_panel: Admin panel
       profile_settings: Profile settings
       sign_out: Sign out
   navigations:

@@ -1,0 +1,14 @@
+en:
+  admin_panel:
+    users_table:
+      header: All Users
+      home_button_text: Home
+      user:
+        avatar: Avatar
+        first_name: First name
+        id: ID
+        language_code: Language code
+        last_name: Last name
+        telegram_username: TG username
+    tabs:
+      users_table: Users table

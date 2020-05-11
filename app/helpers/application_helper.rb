@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  private
-
   def controller_action
     controller_name + '#' + action_name
   end

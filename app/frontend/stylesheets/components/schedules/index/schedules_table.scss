@@ -1,0 +1,22 @@
+tr.schedule {
+  &#new-schedule-row {
+    &.schedule-actions {
+      &:hover {
+        .btn {
+          @extend .btn:hover !optional;
+        }
+
+        .btn-outline-secondary {
+          @extend .btn-outline-secondary:hover !optional;
+        }
+      }
+    }
+  }
+}
+
+tr {
+  &.schedule-row,
+  &#new-schedule-row {
+    cursor: pointer;
+  }
+}

@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :username, uniqueness: true
-
   serialize :context, HashSerializer
   store_accessor :context, :last_message, :replace_last_message, :return_to
 
@@ -19,19 +17,14 @@ class User < ApplicationRecord
   has_many :schedules, through: :schedule_users
 
   def attach_avatar_from_url(url:)
+    return if url.blank?
+
     image = ImageOptimizer.new(url: url).optimized_image
     avatar.attach(io: image, filename: "#{id}_#{username}_avatar.jpg")
   end
 
   def full_name
     first_name + ' ' + last_name
-  end
-
-  def update_tg_avatar_url(new_avatar_url)
-    return if tg_avatar_url == new_avatar_url
-
-    update(tg_avatar_url: new_avatar_url)
-    attach_avatar_from_url(url: new_avatar_url) # [#SR-194] unless custom_avatar.present?
   end
 
   # it's needed to escape devise's extreme depending on emails

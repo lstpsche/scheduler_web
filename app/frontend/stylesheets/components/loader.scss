@@ -1,0 +1,26 @@
+.block-ui-message-container {
+  display: flex;
+  justify-content: center;
+
+  .block-ui-message {
+    #loader-message {
+      // 24px is a line height
+      margin-top: -24px;
+    }
+  }
+}
+
+div.loader-inner {
+  top: 50%;
+  left: 50%;
+}
+
+div.loader.loader-active {
+  height: 50px;
+}
+
+#full-page-cover {
+  .block-ui-message-container {
+    top: 45% !important;
+  }
+}
